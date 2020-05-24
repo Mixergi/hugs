@@ -1,7 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras import Input, Model
-from tensorflow.keras.layers import Activation, Add, BatchNormalization, Concatenate, Conv2D, Dense, GlobalAveragePooling2D, Lambda, MaxPooling2D
-
+from tensorflow.keras.layers import Activation, Add, BatchNormalization, Concatenate, Conv2D, Dense, Dropout, GlobalAveragePooling2D, Lambda, MaxPooling2D
 
 def Conv2D_bn(x, filters, num_row, num_col, padding='same', strides=(1, 1), activation='relu'):
     x = Conv2D(filters, kernel_size=(num_row, num_col),
@@ -122,7 +121,7 @@ def Reduction_B(input_layer):
     branch_2 = Conv2D_bn(branch_2, 384, 3, 3, padding='valid', strides=(2, 2))
 
     branch_3 = Conv2D_bn(input_layer, 256, 1, 1)
-    branch_3 = Conv2D_bn(input_layer, 288, 3, 3, padding='valid', strides=(2, 2))
+    branch_3 = Conv2D_bn(branch_3, 288, 3, 3, padding='valid', strides=(2, 2))
 
     branch_4 = Conv2D_bn(input_layer, 256, 1, 1)
     branch_4 = Conv2D_bn(branch_4, 288, 3, 3)
@@ -132,7 +131,7 @@ def Reduction_B(input_layer):
     
     return x
 
-def inception_resnet_v2(input_shape):
+def inception_resnet_v2(input_shape, classes=1000):
 
     image_input = Input(shape=input_shape)
 
@@ -152,6 +151,10 @@ def inception_resnet_v2(input_shape):
         x = inception_resnet_v2_C(x)
 
     x = GlobalAveragePooling2D()(x)
+
+    x = Dropout(0.8)(x)
+
+    x = Dense(units=classes, activation='softmax')(x)
 
     return Model(image_input, x)
 
