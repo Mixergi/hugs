@@ -17,6 +17,14 @@
 
 {% block title %}Sign up{% endblock %}
 
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
 {% block main %}
 
 <div class="container">

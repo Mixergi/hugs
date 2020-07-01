@@ -163,30 +163,33 @@ def sign_up():
 @app.route("/login", methods=["GET","POST"])
 def login():
     db, cursor = get_db()
+    if not session.get("USERNAME") is None:
+        return redirect(request.url.replace('login','profile'))
+    else:
+        if request.method == "POST":
+            req = request.form
+            email = req.get("email")
+            password = req.get("password")
 
-    if request.method == "POST":
-        req = request.form
-        email = req.get("email")
-        password = req.get("password")
+            sql = """SELECT * FROM accounts WHERE email='%s'
+            """ % (email) 
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            print(result)
 
-        sql = """SELECT * FROM accounts WHERE email='%s'
-        """ % (email) 
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        print(result)
-
-        if result:
-            if str(result[0][2]) == str(password):
-                container(result[0])
-                session["USERNAME"] = str(result[0][0])
-                db.close()
-                return redirect(url_for('profile'))
+            if result:
+                if str(result[0][2]) == str(password):
+                    container(result[0])
+                    print("[0][0] : ", result[0][0])
+                    session["USERNAME"] = str(result[0][0])
+                    db.close()
+                    return redirect(url_for('profile'))
+                else:
+                    flash("잘못된 비밀번호입니다.", "warning")
+                    return redirect(request.url)
             else:
-                flash("잘못된 비밀번호입니다.", "warning")
+                flash("존재하지 않는 사용자명입니다.", "warning")
                 return redirect(request.url)
-        else:
-            flash("존재하지 않는 사용자명입니다.", "warning")
-            return redirect(request.url)
 
     return render_template("public/login.html", session=session.get("USERNAME"))
 
@@ -198,6 +201,8 @@ def container(user):
 def profile():
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
+        print("유저네임 : "+username)
+        print("user_container['test'] : ",user_container[username])
         return render_template("public/profile.html", user=user_container[username], status='Logout')
     else:
         flash("로그인이 필요합니다", "warning")
