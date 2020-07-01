@@ -17,6 +17,14 @@
 
 {% block title %}Sign up{% endblock %}
 
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
 {% block main %}
 
 <div class="container">
@@ -25,7 +33,7 @@
       <h1>Login</h1>
       <hr>
       <form action="/login" method="POST">
-        {{ im.input(label="Username", type="text", id="username", name="username", placeholder="Select a username") }}
+        {{ im.input(label="Email", type="email", id="email", name="email", placeholder="Enter your email") }}
         {{ im.input(label="Password", type="password", id="password", name="password", placeholder="Create a password") }}
         <button type="submit" class="btn btn-primary">Login</button>
 
