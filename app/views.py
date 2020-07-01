@@ -48,6 +48,7 @@ users = {
     }
 }
 
+
 @app.route("/")
 def index():
     return render_template("public/index.html", session=session.get("USERNAME"))
@@ -67,6 +68,7 @@ def allowed_image_filesize(filesize):
         return True
     else:
         return False
+
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_image():
@@ -103,6 +105,7 @@ def upload_audio():
 @app.route("/about")
 def about():
     return "about"
+
 
 @app.route("/all")
 def all():
