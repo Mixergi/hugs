@@ -2,16 +2,29 @@
 
 {% block title %}Home{% endblock %}
 
+
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
 {% block main %}
 
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Index</h1>
+      <h1>Index {{session}}</h1>
     </div>
   </div>
 </div>
 
 {% endblock %}
 
-<img src="../../static/img/rose.jpg" alt="">

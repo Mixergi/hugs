@@ -9,8 +9,9 @@ from werkzeug.utils import secure_filename
 from flask import send_file, send_from_directory, safe_join, abort
 from flask import flash
 
+import os
 import pymysql
-import pylint
+#import pylint
 
 #configuration image
 app.config["IMAGE_UPLOADS"] = "C:/flask-Hug/app/static/img/uploads"
@@ -49,7 +50,7 @@ users = {
 
 @app.route("/")
 def index():
-    return render_template("public/index.html")
+    return render_template("public/index.html", session=session.get("USERNAME"))
 
 def allowed_image(filename):
     if not "." in filename:
@@ -69,7 +70,6 @@ def allowed_image_filesize(filesize):
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_image():
-
     if request.method == "POST":
 
         if request.files:
@@ -92,7 +92,7 @@ def upload_image():
                     print("That file extension is not allowed")
                     return redirect(request.url)
 
-    return render_template("public/upload.html")
+    return render_template("public/upload.html", session=session.get("USERNAME"))
 
 
 @app.route("/upload-audio", methods=["GET", "POST"])
@@ -143,10 +143,18 @@ def sign_up():
             flash("비밀번호는 최소 6자 이상이여야 합니다.", "warning")
             return redirect(request.url)
         
-        flash("Account created!", "success")
-        return redirect(request.url)
+        # test all of validation test of form
+        sql = """INSERT INTO accounts VALUES('%s', '%s' 
+        ,'%s') """ % (username, email, password) 
 
-    return render_template("public/sign_up.html")
+        cursor.execute(sql)
+        db.commit()
+        db.close()
+        
+        flash("Account created!", "success")
+        return redirect(request.url.replace('sign-up','login'))
+
+    return render_template("public/sign_up.html", session=session.get("USERNAME"))
 
 
 @app.route("/login", methods=["GET","POST"])
@@ -155,40 +163,48 @@ def login():
 
     if request.method == "POST":
         req = request.form
-        username = req.get("username")
+        email = req.get("email")
         password = req.get("password")
-        if not username in users:
+
+        sql = """SELECT * FROM accounts WHERE email='%s'
+        """ % (email) 
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        print(result)
+
+        if result:
+            if str(result[0][2]) == str(password):
+                container(result[0])
+                session["USERNAME"] = str(result[0][0])
+                db.close()
+                return redirect(url_for('profile'))
+            else:
+                flash("잘못된 비밀번호입니다.", "warning")
+                return redirect(request.url)
+        else:
             flash("존재하지 않는 사용자명입니다.", "warning")
             return redirect(request.url)
-        else:
-            user = users[username]
 
-        if not password == user["password"]:
-            flash("잘못된 비밀번호입니다.", "warning")
-            return redirect(request.url)
-        else:
-            session["USERNAME"] = user["username"]
-            print("session username set")
-            return redirect(url_for('profile'))
+    return render_template("public/login.html", session=session.get("USERNAME"))
 
-    return render_template("public/login.html")
-
+user_container = dict()
+def container(user):
+    user_container[user[0]] = user
 
 @app.route("/profile")
 def profile():
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
-        user = users[username]
-        return render_template("public/profile.html", user=user)
+        return render_template("public/profile.html", user=user_container[username], status='Logout')
     else:
         flash("로그인이 필요합니다", "warning")
         return redirect(url_for("login"))
 
 
 @app.route("/logout")
-def sign_out():
+def logout():
     session.pop("USERNAME", None)
-    return redirect(url_for("login"))
+    return redirect(url_for("index"))
 
 
 # @app.route("/profile/<username>", methods=['POST', 'GET'])

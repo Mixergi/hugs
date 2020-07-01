@@ -44,9 +44,12 @@
         <li class="nav-item">
           <a class="nav-link" href="/profile">profile</a>
         </li>
+
+
         <li class="nav-item">
-          <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+          {% block loglink %}{% endblock%}         
         </li>
+
       </ul>
     </div>
   </nav>
