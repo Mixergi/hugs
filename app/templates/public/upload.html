@@ -1,0 +1,58 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Upload</h1>
+      <hr>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select image</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="image" id="image" oninput="imagesize(this);">
+            <label class="custom-file-label" for="image">Select image...</label>
+
+          </div>
+        </div>
+        <button type="submit" id="imageB" class="btn btn-primary">Upload</button>
+
+      </form>
+      <hr>
+      <form action="/upload-audio" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select audio</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="audio" id="audio" oninput="audiosize(this);">
+            <label class="custom-file-label" for="audio">Select audio...</label>
+          </div>
+        </div>
+        <button type="submit" id="audioB" class="btn btn-primary">Upload</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function imagesize(elem){
+    document.cookie = `filesize=${elem.files[0].size}`
+    document.getElementById('audio').disabled = true
+    document.getElementById('audioB').disabled = true
+  }
+
+  function audiosize(elem){
+    document.cookie = `filesize=${elem.files[0].size}`
+    document.getElementById('image').disabled = true
+    document.getElementById('imageB').disabled = true
+  }
+</script>
+
+{% endblock %}

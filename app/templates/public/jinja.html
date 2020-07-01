@@ -1,0 +1,47 @@
+{% import "macros/input_macros.html" as im %}
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Jinja{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Jinja</h1>
+      <hr>
+
+      <h4>Accessing an objects value</h4>
+      <hr>
+      <p>Hello {{ my_name }}!</p>
+
+      <h4>Custom filters</h4>
+      <hr>
+      <p>{{ date }}</p>
+
+      <h4>Your friends Info</h4>
+      <hr>
+      <strong class="d-block mb-3">name & ages</strong>
+      <ul>
+        {% for name, age in friends.items() %}
+        <li>{{ name }}: {{ age }}</li>
+        {% endfor %}
+      </ul>
+
+      <h4>Macros</h4>
+      <hr>
+      <form action="#" method="POST">
+
+        {{ im.input(label="Name", id="name", name="name", placeholder="Enter your name") }}
+        {{ im.input(label="Email", type="email", id="email", name="email", placeholder="Enter your email") }}
+        {{ im.input(label="Password", id="password", name="password", placeholder="Enter your password") }}
+      
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% import "macros/input_macros.html" as im %}
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Sign up</h1>
+      <hr>
+      <form action="/sign-up" method="POST">
+        {{ im.input(label="Username", type="text", id="username", name="username", placeholder="Select a username") }}
+        {{ im.input(label="Email", type="email", id="email", name="email", placeholder="Enter your email") }}
+        {{ im.input(label="Password", type="password", id="password", name="password", placeholder="Create a password") }}
+        {{ im.input(label="Confirm Password", type="password", id="password", name="conf_password", placeholder="Confirm a password") }}
+        <button type="submit" class="btn btn-primary">Sign up</button>
+
+        {% if feedback %}
+        <p class="text-danger float-right">{{ feedback }}</p>
+        {% endif %}
+        {% if success %}
+        <p class="text-success float-right">{{ success }}</p>
+        {% endif %}
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
