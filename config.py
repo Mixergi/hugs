@@ -21,7 +21,7 @@ class DevelopmentConfig(Config):
     DB_USERNAME = "admin"
     DB_PASSWORD = "cd1013@"
 
-    IMAGE_UPLOADS = "/home/username/projects/my_app/app/static/images/uploads"
+    IMAGE_UPLOADS = "C:/hugs/app/static/img/uploads"
 
     SESSION_COOKIE_SECURE = False
 

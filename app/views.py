@@ -5,25 +5,27 @@ from flask import session, url_for
 from flask import render_template
 from flask import request, redirect
 from flask import jsonify, make_response
+from flask import Flask, Response
 from werkzeug.utils import secure_filename
 from flask import send_file, send_from_directory, safe_join, abort
 from flask import flash
+from flask import stream_with_context
 
 import os
 import pymysql
-#import pylint
+import pylint
 
 #configuration image
-app.config["IMAGE_UPLOADS"] = "C:/flask-Hug/app/static/img/uploads"
+app.config["IMAGE_UPLOADS"] = "C:/hugs/app/static/img/uploads"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
 
 #configuration audio
-app.config["AUDIO_UPLOADS"] = "C:/flask-Hug/app/static/audio/uploads"
+app.config["AUDIO_UPLOADS"] = "C:/hugs/app/static/audio/uploads"
 app.config["ALLOWED_AUDIO_EXTENSIONS"] = ["MP3", "WAV", "WMA", "AIFF", "ALAC"]
 
-#login
+#configuration login
 app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
 #database
@@ -37,7 +39,7 @@ def get_db():
     cursor = db.cursor()
     return db, cursor
 
-# hard coding
+# mocking object
 users = {
     "Dawon": {
         "username": "Dawon",
@@ -100,6 +102,22 @@ def upload_image():
 @app.route("/upload-audio", methods=["GET", "POST"])
 def upload_audio():
     return render_template("public/upload.html")
+
+
+@app.route("/streaming")
+def streaming_main_page():
+    return render_template("public/upload.html")
+
+
+@app.route("/streaming/<song_name>")
+def streamwav(song_name):
+    def generate():
+        with open(f"app/static/audio/uploads/{song_name}.wav", "rb") as song:
+            data = song.read(1024)
+            while data:
+                yield data
+                data = song.read(1024)
+    return Response(stream_with_context(generate()), mimetype="audio/x-wav")
 
 
 @app.route("/about")
@@ -201,8 +219,6 @@ def container(user):
 def profile():
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
-        print("유저네임 : "+username)
-        print("user_container['test'] : ",user_container[username])
         return render_template("public/profile.html", user=user_container[username], status='Logout')
     else:
         flash("로그인이 필요합니다", "warning")
