@@ -12,4 +12,5 @@
 - Flask WSGI toolkit : Werkzeug
 - External framework : Bootstrap
 - External library : jquery
-- Database : Local Database
+- Database : MySQL
+- Database adapter library : pymysql
