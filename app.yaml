@@ -3,7 +3,7 @@ runtime: python3
 api_version: 1
 threadsafe: true
 handlers:
-- url: /app
+- url: /(.*\.(ico$|jpg$|png$|gif$|wav$|html$|html5$|))
 - static_dir: /static
 
 - url: /.*
