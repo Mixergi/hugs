@@ -14,6 +14,7 @@ from flask import stream_with_context
 import os
 import pymysql
 import pylint
+import time
 
 #configuration image
 app.config["IMAGE_UPLOADS"] = "C:/hugs/app/static/img/uploads"
@@ -106,8 +107,8 @@ def upload_audio():
 
 @app.route("/streaming")
 def streaming_main_page():
-    return render_template("public/upload.html")
-
+    return render_template("public/stream.html5")
+    
 
 @app.route("/streaming/<song_name>")
 def streamwav(song_name):

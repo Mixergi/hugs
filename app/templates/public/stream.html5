@@ -1,0 +1,83 @@
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Streaming{% endblock %}
+
+{% block loglink %}
+{% if session == None %}
+      <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% else %}
+      <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Streaming</h1>
+      <hr>
+        <div class="form-group">
+           <label>Elektronomia - Summersong 2018</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/summersong2018" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+        <hr>
+          <div class="form-group">
+           <label>Elektronomia - Summersong 2020</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/summersong2020" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+        <hr>
+        <div class="form-group">
+           <label>Severo - Stargazing</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/stargazing" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+        <hr>
+        <div class="form-group">
+           <label>The Chainsmokers & Coldplay - Something Just Like This</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/stjt" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+        <hr>
+        <div class="form-group">
+           <label>Marshmello - Alone</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/alone" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+        <hr>  
+        <div class="form-group">
+           <label>The Chainsmokers - Roses ft. ROZES</label>
+           <div class="custom-file">
+              <audio controls>
+                  <source src="http://localhost:5000/streaming/roses" type="audio/mpeg">
+              </audio>
+           </div>
+        </div>
+            
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
