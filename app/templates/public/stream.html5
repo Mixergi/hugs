@@ -47,15 +47,6 @@
         </div>
         <hr>
         <div class="form-group">
-           <label>The Chainsmokers & Coldplay - Something Just Like This</label>
-           <div class="custom-file">
-              <audio controls>
-                  <source src="http://localhost:5000/streaming/stjt" type="audio/mpeg">
-              </audio>
-           </div>
-        </div>
-        <hr>
-        <div class="form-group">
            <label>Marshmello - Alone</label>
            <div class="custom-file">
               <audio controls>

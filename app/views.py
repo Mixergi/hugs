@@ -1,6 +1,11 @@
 from app import app
 from datetime import datetime
 
+import os
+import pymysql
+import pylint
+import time
+
 from flask import session, url_for
 from flask import render_template
 from flask import request, redirect
@@ -11,10 +16,7 @@ from flask import send_file, send_from_directory, safe_join, abort
 from flask import flash
 from flask import stream_with_context
 
-import os
-import pymysql
-import pylint
-import time
+
 
 #configuration image
 app.config["IMAGE_UPLOADS"] = "C:/hugs/app/static/img/uploads"
