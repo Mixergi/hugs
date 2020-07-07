@@ -4,7 +4,6 @@ api_version: 1
 threadsafe: true
 handlers:
 - url: /(.*\.(ico$|jpg$|png$|gif$|wav$|html$|html5$|))
-- static_dir: /static
 
 - url: /.*
   secure: always
