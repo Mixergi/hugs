@@ -2,5 +2,7 @@ runtime: python38
 entrypoint: gunicorn -b :5000 main:app
 
 handlers:
-- url: auto
-  script: main.app
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
