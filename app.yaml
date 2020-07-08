@@ -1,5 +1,7 @@
 runtime: python27
 entrypoint: gunicorn -b :5000 main:app
+api_version: 1
+threadsafe: true
 
 handlers:
 - url: /*
