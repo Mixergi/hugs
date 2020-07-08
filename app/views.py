@@ -109,7 +109,7 @@ def upload_audio():
 
 @app.route("/streaming")
 def streaming_main_page():
-    return render_template("public/stream.html5")
+    return render_template("public/stream.html5", session=session.get("USERNAME"))
     
 
 @app.route("/streaming/<song_name>")
@@ -234,15 +234,6 @@ def logout():
     return redirect(url_for("index"))
 
 
-# @app.route("/profile/<username>", methods=['POST', 'GET'])
-# def profile(username):
-#     user = None
-#     if username in users:
-#         user = users[username]
-
-#     return render_template("public/profile.html", username=username, user=user)
-
-
 @app.route("/json", methods=["POST"])
 def json_example():
     if request.is_json:
@@ -261,7 +252,7 @@ def json_example():
 def query():
     if request.args:
         args = request.args
-        serialized = ", ".join(f"{k}: {v}" for k, v in request.args.items())
+        serialized = ", ".join(f"{k}: {v}" for k, v in args.items())
         return f"(Query) {serialized}", 200
     else:
         return "No query string received", 200 

@@ -5,9 +5,9 @@
 
 {% block loglink %}
 {% if session == None %}
-      <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
-{% else %}
       <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+      <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
 {% endif %}
 {% endblock %}
 
@@ -16,6 +16,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
+
 
       <h1>Streaming</h1>
       <hr>
