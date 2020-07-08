@@ -1,2 +1,6 @@
 runtime: python38
 entrypoint: gunicorn -b :5000 main:app
+
+handlers:
+- url: /.*
+  script: main.app
