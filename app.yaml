@@ -8,6 +8,3 @@ api_version: 1
 threadsafe: true
 handlers:
 - url: /(.*\.(ico$|jpg$|png$|gif$|wav$|html$|html5$|))
-
-manual_scaling:
-  instances: 1
