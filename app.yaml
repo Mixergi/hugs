@@ -1,8 +1,8 @@
-runtime: python37
+runtime: python27
 entrypoint: gunicorn -b :5000 main:app
 
 handlers:
 - url: /*
-  script: auto
+  script: main.app
 
 
