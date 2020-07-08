@@ -1,4 +1,4 @@
-runtime: python38
+runtime: python3
 entrypoint: gunicorn -b :5000 main:app
 
 handlers:
