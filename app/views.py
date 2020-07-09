@@ -109,7 +109,7 @@ def upload_audio():
 
 @app.route("/streaming")
 def streaming_main_page():
-    return render_template("public/stream.html5", session=session.get("USERNAME"))
+    return render_template("public/stream.html", session=session.get("USERNAME"))
     
 
 @app.route("/streaming/<song_name>")
@@ -125,7 +125,7 @@ def streamwav(song_name):
 
 @app.route("/about")
 def about():
-    return "about"
+    return render_template('public/about.html')
 
 
 @app.route("/all")

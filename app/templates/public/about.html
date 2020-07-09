@@ -1,0 +1,35 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}About us{% endblock %}
+
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>About us</h1>
+      <hr>
+
+      <div class="card">
+        <div class="card-body">
+          <h4>광주소프트웨어마이스터고등학교</h4>
+          <hr>
+
+          <p>Hugs 프로젝트 Back-End 개발자 : 최다원</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
