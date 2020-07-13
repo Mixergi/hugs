@@ -36,8 +36,8 @@ def get_db():
     db = pymysql.connect(host='localhost',
                         port=3306,
                         user='root',
-                        passwd='cd101368@',
-                        db='HUG',
+                        passwd='',
+                        db='hugs',
                         charset='utf8')
     cursor = db.cursor()
     return db, cursor
