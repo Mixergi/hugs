@@ -33,7 +33,7 @@ app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
 #database
 def get_db():
-    db = pymysql.connect(host='localhost',
+    db = pymysql.connect(host='35.201.143.25',
                         port=3306,
                         user='root',
                         passwd='',
