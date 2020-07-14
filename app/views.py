@@ -125,7 +125,7 @@ def streamwav(song_name):
 
 @app.route("/about")
 def about():
-    return render_template('public/about.html')
+    return render_template('public/about.html', session=session.get("USERNAME"))
 
 
 @app.route("/all")
