@@ -33,11 +33,11 @@ app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
 #database
 def get_db():
-    db = pymysql.connect(host='localhost',
+    db = pymysql.connect(host='34.64.113.4',
                         port=3306,
                         user='root',
-                        passwd='cd101368@',
-                        db='hug',
+                        passwd='',
+                        db='hugs',
                         charset='utf8')
     cursor = db.cursor()
     return db, cursor
