@@ -115,7 +115,7 @@ def streaming_main_page():
 @app.route("/streaming/<song_name>")
 def streamwav(song_name):
     def generate():
-        with open(f"app/static/audio/uploads/{song_name}.wav", "rb") as song:
+        with open(f"app/static/audio/uploads/{song_name}.mp3", "rb") as song:
             data = song.read(1024)
             while data:
                 yield data
