@@ -17,6 +17,32 @@ from flask import flash
 from flask import stream_with_context
 
 
+class Database:
+    def __init__(self, user, port):
+        self._user = user
+        self._port = port
+
+    def get_local_db(self):
+        db = pymysql.connect(host='localhost',
+                        port=self._port,
+                        user=self._user,
+                        passwd='cd101368@',
+                        db='hugs',
+                        charset='utf8')
+        cursor = db.cursor()
+        return db, cursor
+
+    def get_db(self):
+        db = pymysql.connect(host='34.64.113.4',
+                        port=self._port,
+                        user=self._user,
+                        passwd='',
+                        db='hugs',
+                        charset='utf8')
+        cursor = db.cursor()
+        return db, cursor
+    
+
 #configuration image
 app.config["IMAGE_UPLOADS"] = "/static/img/uploads"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
@@ -32,6 +58,9 @@ app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
 #container
 user_container = dict()
+
+#database instance
+user_database = Database('root', 3306)
 
 @app.route("/")
 def index():
@@ -87,7 +116,7 @@ def about():
 
 @app.route("/all")
 def all():
-    db, cursor = get_db()
+    db, cursor = user_database.get_db()
     sql = """select * from accounts;"""
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -95,7 +124,7 @@ def all():
     
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    db, cursor = get_db()
+    db, cursor = user_database.get_db()
 
     if request.method == "POST":
         req = request.form
@@ -138,7 +167,7 @@ def sign_up():
 
 @app.route("/login", methods=["GET","POST"])
 def login():
-    db, cursor = get_db()
+    db, cursor = user_database.get_db()
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','profile'))
     else:
@@ -186,16 +215,6 @@ def profile():
 
 def container(user):
     user_container[user[0]] = user
-
-def get_db():
-    db = pymysql.connect(host='34.64.113.4',
-                        port=3306,
-                        user='root',
-                        passwd='',
-                        db='hugs',
-                        charset='utf8')
-    cursor = db.cursor()
-    return db, cursor
 
 def allowed_image(filename):
     if not "." in filename:
