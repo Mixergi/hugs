@@ -17,63 +17,25 @@ from flask import flash
 from flask import stream_with_context
 
 
-
 #configuration image
-app.config["IMAGE_UPLOADS"] = "C:/hugs/app/static/img/uploads"
+app.config["IMAGE_UPLOADS"] = "/static/img/uploads"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
 
 #configuration audio
-app.config["AUDIO_UPLOADS"] = "C:/hugs/app/static/audio/uploads"
+app.config["AUDIO_UPLOADS"] = "/static/audio/uploads"
 app.config["ALLOWED_AUDIO_EXTENSIONS"] = ["MP3", "WAV", "WMA", "AIFF", "ALAC"]
 
 #configuration login
 app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
-#database
-def get_db():
-    db = pymysql.connect(host='34.64.113.4',
-                        port=3306,
-                        user='root',
-                        passwd='',
-                        db='hugs',
-                        charset='utf8')
-    cursor = db.cursor()
-    return db, cursor
-
-# mocking object
-users = {
-    "Dawon": {
-        "username": "Dawon",
-        "email": "cd941568@gmail.com",
-        "password": "cd1234",
-        "bio": "CTO, Google LLC",
-        "twitter_handle": "@dawon"
-    }
-}
-
+#container
+user_container = dict()
 
 @app.route("/")
 def index():
     return render_template("public/index.html", session=session.get("USERNAME"))
-
-def allowed_image(filename):
-    if not "." in filename:
-        return False
-
-    ext = filename.rsplit(".", 1)[1]
-    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
-        return True
-    else:
-        return False
-
-def allowed_image_filesize(filesize):
-    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
-        return True
-    else:
-        return False
-
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_image():
@@ -101,17 +63,14 @@ def upload_image():
 
     return render_template("public/upload.html", session=session.get("USERNAME"))
 
-
 @app.route("/upload-audio", methods=["GET", "POST"])
 def upload_audio():
     return render_template("public/upload.html")
-
 
 @app.route("/streaming")
 def streaming_main_page():
     return render_template("public/stream.html", session=session.get("USERNAME"))
     
-
 @app.route("/streaming/<song_name>")
 def streamwav(song_name):
     def generate():
@@ -122,11 +81,9 @@ def streamwav(song_name):
                 data = song.read(1024)
     return Response(stream_with_context(generate()), mimetype="audio/x-wav")
 
-
 @app.route("/about")
 def about():
     return render_template('public/about.html', session=session.get("USERNAME"))
-
 
 @app.route("/all")
 def all():
@@ -136,7 +93,6 @@ def all():
     result = cursor.fetchall()
     return "all members : " + str(result)
     
-
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
     db, cursor = get_db()
@@ -180,7 +136,6 @@ def sign_up():
 
     return render_template("public/sign_up.html", session=session.get("USERNAME"))
 
-
 @app.route("/login", methods=["GET","POST"])
 def login():
     db, cursor = get_db()
@@ -214,9 +169,10 @@ def login():
 
     return render_template("public/login.html", session=session.get("USERNAME"))
 
-user_container = dict()
-def container(user):
-    user_container[user[0]] = user
+@app.route("/logout")
+def logout():
+    session.pop("USERNAME", None)
+    return redirect(url_for("index"))
 
 @app.route("/profile")
 def profile():
@@ -224,49 +180,35 @@ def profile():
         username = session.get("USERNAME")
         return render_template("public/profile.html", user=user_container[username], status='Logout')
     else:
+        print('need login')
         flash("로그인이 필요합니다", "warning")
         return redirect(url_for("login"))
 
+def container(user):
+    user_container[user[0]] = user
 
-@app.route("/logout")
-def logout():
-    session.pop("USERNAME", None)
-    return redirect(url_for("index"))
+def get_db():
+    db = pymysql.connect(host='34.64.113.4',
+                        port=3306,
+                        user='root',
+                        passwd='',
+                        db='hugs',
+                        charset='utf8')
+    cursor = db.cursor()
+    return db, cursor
 
+def allowed_image(filename):
+    if not "." in filename:
+        return False
 
-@app.route("/json", methods=["POST"])
-def json_example():
-    if request.is_json:
-        req = request.get_json()
-        response_body = {
-            "message": "JSON received!",
-            "sender": req.get("name")
-        }
-        res = make_response(jsonify(response_body), 200)
-        return res
+    ext = filename.rsplit(".", 1)[1]
+    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
+        return True
     else:
-        return make_response(jsonify({"message": "Request body must be JSON"}), 400)
+        return False
 
-
-@app.route("/query")
-def query():
-    if request.args:
-        args = request.args
-        serialized = ", ".join(f"{k}: {v}" for k, v in args.items())
-        return f"(Query) {serialized}", 200
+def allowed_image_filesize(filesize):
+    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
+        return True
     else:
-        return "No query string received", 200 
-
-
-@app.route("/guestbook")
-def guestbook():
-    return render_template("public/guestbook.html")
-
-
-@app.route("/guestbook/create-entry", methods=["POST"])
-def create_entry():
-    req = request.get_json()
-    print(req)
-    res = make_response(jsonify(req), 200)
-    return res
-
+        return False
