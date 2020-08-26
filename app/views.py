@@ -247,11 +247,12 @@ def logout():
 def profile():
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
+        print('checkpoint A')
         return render_template("public/profile.html", user=user_session_container[username], status='Logout')
     else:
         print('need login')
         flash("로그인이 필요합니다", "warning")
-        print('checkpoint')
+        print('checkpoint B')
         return redirect(url_for("login"))
 
 def container(user):
