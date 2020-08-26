@@ -251,6 +251,7 @@ def profile():
     else:
         print('need login')
         flash("로그인이 필요합니다", "warning")
+        print('checkpoint')
         return redirect(url_for("login"))
 
 def container(user):
