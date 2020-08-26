@@ -228,7 +228,7 @@ def login():
                     print("[0][0] : ", result[0][0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
-                    return redirect(url_for('profile'))
+                    return render_template("public/profile.html", user=user_session_container[username], status='Logout')
                 else:
                     flash("잘못된 비밀번호입니다.", "warning")
                     return redirect(request.url)
