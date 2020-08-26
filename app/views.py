@@ -203,7 +203,7 @@ def sign_up():
         flash("Account created!", "success")
         return redirect(request.url.replace('sign-up','login'))
 
-    return render_template("public/sign_up.html", session=session.get("USERNAME"))
+    return render_template("public/signup.html", session=session.get("USERNAME"))
 
 @app.route("/login", methods=["GET","POST"])
 def login():
