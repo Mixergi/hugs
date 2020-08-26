@@ -7,11 +7,11 @@
 <html>
 
 <head>
-	<title>Elements - Editorial by HTML5 UP</title>
+	<title>Hugs - Make Your Own</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/sign.css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/sign.css') }}">
 </head>
 
 <body class="is-preload">
@@ -33,28 +33,28 @@
 							<div class="appTitle">회원가입</div>
 						</header>
 						<div class="signupFormDiv">
-							<form action="/signup" method="POST">
+							<form action="/sign-up" method="POST">
 								<label class="inp">
-									<input type="text" id="inp" placeholder="&nbsp;" name="sname" required autofocus>
+									<input type="text" id="inp" placeholder="&nbsp;" name="username" required autofocus>
 									<span class="label">이름</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="text" id="inp" placeholder="&nbsp;" name="semail">
+									<input type="email" id="inp" placeholder="&nbsp;" name="email">
 									<span class="label">이메일</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="password" id="inp" placeholder="&nbsp;" name="spw">
+									<input type="password" id="inp" placeholder="&nbsp;" name="password">
 									<span class="label">비밀번호</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="password" id="inp" placeholder="&nbsp;" name="scpw">
+									<input type="password" id="inp" placeholder="&nbsp;" name="conf_password">
 									<span class="label">비밀번호 확인</span>
 									<span class="border"></span>
 								</label>
-								<input type="button" name="" value="회원가입" class="primary fit signupBtn">
+								<input type="submit" name="" value="회원가입" class="primary fit signupBtn">
 							</form>
 						</div>
 					</div>
@@ -73,18 +73,18 @@
 					</header>
 					<ul>
 						<li>
-							<a href="index.html">홈</a>
+							<a href="/">홈</a>
 						</li>
-						<li><a href="makeMusic.html">음악 생성</a></li>
-						<li><a href="musicList.html">뮤직 리스트</a></li>
+						<li><a href="/makeMusic">음악 생성</a></li>
+						<li><a href="/musicList">뮤직 리스트</a></li>
 						<li>
 							<span class="opener">내 정보</span>
 							<ul>
-								<li><a href="myMusicList.html">내 음악</a></li>
-								<li><a href="playList.html">플레이리스트</a></li>
+								<li><a href="/myMusicList">내 음악</a></li>
+								<li><a href="/playList">플레이리스트</a></li>
 							</ul>
 						</li>
-						<li><a href="login.html">로그인</a></li>
+						<li><a href="/login">로그인</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -93,11 +93,11 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 </body>
 

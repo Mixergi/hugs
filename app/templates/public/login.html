@@ -1,49 +1,97 @@
-{% import "macros/input_macros.html" as im %}
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                <span>{{ message }}</span>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+<head>
+	<title>Hugs - Make Your Own</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/sign.css') }}">
+</head>
 
-{% extends "public/templates/public_template.html" %}
+<body class="is-preload">
 
-{% block title %}Login{% endblock %}
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-{% block loglink %}
-{% if session == None %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
-{% else %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
-{% endif %}
-{% endblock %}
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+				</header>
+				<!-- Content -->
+				<section>
+					<!-- Content -->
+					<div class="content">
+						<header>
+							<div class="appTitle">로그인</div>
+						</header>
+						<div class="loginFormDiv">
+				      <form action="/login" method="POST">
+				        <label class="inp">
+				          <input type="email" id="inp" placeholder="&nbsp;" name="email" required autofocus>
+				          <span class="label">이메일</span>
+				          <span class="border"></span>
+				        </label>
+				        <label class="inp">
+				          <input type="password" id="inp" placeholder="&nbsp;" name="password">
+				          <span class="label">비밀번호</span>
+				          <span class="border"></span>
+				        </label>
+				        <input type="submit" name="" value="로그인" class="primary fit loginBtn">
+				      </form>
+				      <div class="notUser">
+				        아직 회원이 아니신가요?
+				        <a href="/signup" class="goSignupBtn">회원가입</a>
+				      </div>
+				    </div>
+					</div>
+				</section>
 
-{% block main %}
+			</div>
+		</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Login</h1>
-      <hr>
-      <form action="/login" method="POST">
-        {{ im.input(label="Email", type="email", id="email", name="email", placeholder="Enter your email") }}
-        {{ im.input(label="Password", type="password", id="password", name="password", placeholder="Create a password") }}
-        <button type="submit" class="btn btn-primary">Login</button>
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li>
+							<a href="/">홈</a>
+						</li>
+						<li><a href="/makeMusic">음악 생성</a></li>
+						<li><a href="/musicList">뮤직 리스트</a></li>
+						<li>
+							<span class="opener">내 정보</span>
+							<ul>
+								<li><a href="/myMusicList">내 음악</a></li>
+								<li><a href="/playList">플레이리스트</a></li>
+							</ul>
+						</li>
+						<li><a href="/login">로그인</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 
-        <a href="/sign-up">
-        <p class="text-success float-right">Create an account</p>
-        </a>
-      </form>
+	</div>
 
-    </div>
-  </div>
-</div>
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
 
-{% endblock %}
+</html>

@@ -1,0 +1,49 @@
+{% import "macros/input_macros.html" as im %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Login</h1>
+      <hr>
+      <form action="/login" method="POST">
+        {{ im.input(label="Email", type="email", id="email", name="email", placeholder="Enter your email") }}
+        {{ im.input(label="Password", type="password", id="password", name="password", placeholder="Create a password") }}
+        <button type="submit" class="btn btn-primary">Login</button>
+
+        <a href="/sign-up">
+        <p class="text-success float-right">Create an account</p>
+        </a>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

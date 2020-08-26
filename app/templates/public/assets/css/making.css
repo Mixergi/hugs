@@ -1,0 +1,125 @@
+.makingMusicName {
+  font-size: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.appTitle {
+  margin-bottom: 0.2em;
+}
+
+.makingGuide {
+  width: 100%;
+  font-size: 1.1em !important;
+  font-weight: 500;
+  margin-bottom: 3em;
+  color: black;
+}
+
+.cProgressDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  position: relative;
+}
+
+/*
+My component for implementation of progress bar. I use CSS Custom Properties for settings of parameters such as size, color, unit e.t.c. The diagram is implemented via SVG.
+
+*/
+/*
+=====
+c-progress
+=====
+*/
+.c-progress {
+  --uicProgressSize: var(--cProgressSize);
+  --uicProgressCircumference: var(--cProgressCircumference, 2.51327em);
+  --uicProgressGraphValue: var(--cProgressGraphValue, 2.51327em);
+  font-size: var(--uicProgressSize);
+  width: 1em;
+  height: 1em;
+  position: relative;
+  transform: rotate(-90deg);
+}
+
+.c-progress__circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c-progress__progress-bg {
+  opacity: .4;
+}
+
+.c-progress__progress-value {
+  stroke-dasharray: var(--uicProgressCircumference);
+  stroke-dashoffset: var(--uicProgressGraphValue);
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.42, 0, 0, 1.1), stroke .5s ease-out;
+}
+
+/*
+=====
+c-progressbar
+=====
+*/
+.c-progressbar {
+  --cProgressSize: var(--cProgressBarSize);
+  --cProgressColor: var(--cProgressBarColor);
+  --cProgressStrokeWidth: var(--cProgressBarStrokeWidth);
+  --uicProgressBarSize: var(--cProgressBarSize);
+  --uicProgressBarUnit: var(--cProgressBarUnit, "%");
+  --uicProgressBarValueFontFamily: var(--cProgressBarValueFontFamily);
+  --uicProgressBarValueFontSize: var(--cProgressBarValueFontSize);
+  --uicProgressBarValueFontWeight: var(--cProgressBarValueFontWeight);
+  --uicProgressBarValueTextColor: var(--cProgressBarValueTextColor);
+  position: relative;
+  width: var(--uicProgressBarSize);
+  height: var(--uicProgressBarSize);
+}
+
+.c-progressbar__value {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c-progressbar__value::after {
+  content: var(--uicProgressBarUnit);
+}
+
+.c-progressbar__value {
+  font-family: var(--uicProgressBarValueFontFamily);
+  font-weight: var(--uicProgressBarValueFontWeight);
+  font-size: var(--uicProgressBarValueFontSize);
+  color: var(--uicProgressBarValueTextColor);
+}
+
+/*
+=====
+SETTINGS
+=====
+*/
+.c-progressbar {
+  --cProgressBarUnit: "%";
+  --cProgressBarSize: 70vmin;
+  --cProgressBarColor: #0C36A2;
+  --cProgressBarValueFontFamily: inherit;
+  --cProgressBarValueFontSize: 9vmin;
+  --cProgressBarValueFontWeight: 700;
+  --cProgressBarStrokeWidth: 3vmin;
+  --cProgressBarValueTextColor: #0C36A2;
+}

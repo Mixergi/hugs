@@ -1,212 +1,95 @@
-{% extends "public/templates/public_template.html" %}
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
-{% block title %}Home{% endblock %}
+<head>
+	<title>Hugs - Make Your Own</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+ 
+<body class="is-preload">
 
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-{% block loglink %}
-{% if session == None %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
-{% else %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
-{% endif %}
-{% endblock %}
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+				</header>
+				<!-- Content -->
+				<section>
+					<!-- Content -->
+					<div class="content">
+						<header>
+							<div class="appTitle">
+								<span>Make Your Own</span><br>
+								<span class="appTitleSub">세상 어디에도 없던, 당신만을 위한</span>
+							</div>
+						</header>
+						<div>
+							<!-- <input type="button" name="" value="뮤직 리스트" class="primary fit musicListBtn"> -->
+							<button type="button" name="button" class="primary fit bestMusicBtn" onclick="location.href='musicList.html'">
+								<span class="btnTitle">Best music</span><br>
+								<span class="btnSubTitle">인기가 좋은 음악들을 들어보세요.</span>
+							</button>
+						</div>
+						<div>
+							<!-- <input type="button" name="" value="음악 생성" class="primary fit makeMusicBtn"> -->
+							<button type="button" name="button" class="primary fit makeMusicBtn" onclick="location.href='makeMusic.html'">
+								<span class="btnTitle">Make a music</span><br>
+								<span class="btnSubTitle">당신의 취향에 맞게 AI가 음악을 만들어 드립니다.</span>
+							</button>
+						</div>
+					</div>
+				</section>
 
-<link rel="stylesheet" href="C:/hugs/app/static/css/service.css">
-<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+			</div>
+		</div>
 
-{% block main %}
-{% if session == None %}
-<section class="section services-section" id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h2>Hello, Guest</h2>
-                    <p>Hugs 서비스</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-desktop"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Create A New Song </h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Others Songs</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-comment"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Community</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-image"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Albums</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-th"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Streaming</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-cog"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Advanced Options</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-        </div>
-    </div>
-</section>
-{% else %}
-<section class="section services-section" id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h2>Hello, {{session}}</h2>
-                    <p>Hugs 서비스</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-desktop"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Create A New Song </h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Others Songs</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-comment"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Community</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-image"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Albums</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-th"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Streaming</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-            <!-- feaure box -->
-            <div class="col-sm-6 col-lg-4">
-                <div class="feature-box-1">
-                    <div class="icon">
-                        <i class="fa fa-cog"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h5>Advanced Options</h5>
-                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- / -->
-        </div>
-    </div>
-</section>
-{% endif %}
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li>
+							<a href="/">홈</a>
+						</li>
+						<li><a href="/makeMusic">음악 생성</a></li>
+						<li><a href="/musicList">뮤직 리스트</a></li>
+						<li>
+							<span class="opener">내 정보</span>
+							<ul>
+								<li><a href="/myMusicList">내 음악</a></li>
+								<li><a href="/playList">플레이리스트</a></li>
+							</ul>
+						</li>
+						<li><a href="/login">로그인</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 
-{% endblock %}
+	</div>
 
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
 
-
+</html>

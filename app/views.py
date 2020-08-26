@@ -27,7 +27,7 @@ class Database:
                         port=self._port,
                         user=self._user,
                         passwd='cd101368@',
-                        db='hugs',
+                        db='hug',
                         charset='utf8')
         cursor = db.cursor()
         return db, cursor
@@ -57,7 +57,7 @@ app.config["ALLOWED_AUDIO_EXTENSIONS"] = ["MP3", "WAV", "WMA", "AIFF", "ALAC"]
 app.config["SECRET_KEY"] = 'n1otDX895NuHB51rv6paUA'
     
 #container
-user_container = dict()
+user_session_container = dict()
 
 #database instance
 user_database = Database('root', 3306)
@@ -65,6 +65,46 @@ user_database = Database('root', 3306)
 @app.route("/")
 def index():
     return render_template("public/index.html", session=session.get("USERNAME"))
+
+@app.route("/lyrics")
+def lyrics():
+    return render_template("public/lyrics.html", session=session.get("USERNAME"))
+
+@app.route("/makeMusic")
+def makeMusic():
+    return render_template("public/makeMusic.html", session=session.get("USERNAME"))
+
+@app.route("/making")
+def making():
+    return render_template("public/making.html", session=session.get("USERNAME"))
+
+@app.route("/musicList")
+def musicList():
+    return render_template("public/musicList.html", session=session.get("USERNAME"))
+
+@app.route("/myMusicList")
+def myMusicList():
+    return render_template("public/myMusicList.html", session=session.get("USERNAME"))
+
+@app.route("/playList")
+def playList():
+    return render_template("public/playList.html", session=session.get("USERNAME"))
+
+@app.route("/playListMusic")
+def playListMusic():
+    return render_template("public/playListMusic.html", session=session.get("USERNAME"))
+
+@app.route("/select")
+def select():
+    return render_template("public/select.html", session=session.get("USERNAME"))
+
+@app.route("/signup")
+def signup():
+    return render_template("public/signup.html", session=session.get("USERNAME"))
+
+@app.route("/terms")
+def terms():
+    return render_template("public/terms.html", session=session.get("USERNAME"))
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_image():
@@ -207,14 +247,14 @@ def logout():
 def profile():
     if not session.get("USERNAME") is None:
         username = session.get("USERNAME")
-        return render_template("public/profile.html", user=user_container[username], status='Logout')
+        return render_template("public/profile.html", user=user_session_container[username], status='Logout')
     else:
         print('need login')
         flash("로그인이 필요합니다", "warning")
         return redirect(url_for("login"))
 
 def container(user):
-    user_container[user[0]] = user
+    user_session_container[user[0]] = user
 
 def allowed_image(filename):
     if not "." in filename:

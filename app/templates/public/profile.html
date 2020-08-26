@@ -1,35 +1,80 @@
-{% extends "public/templates/public_template.html" %}
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
-{% block title %}Profile{% endblock %}
+<head>
+	<title>Hugs - Make Your Own</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+ 
+<body class="is-preload">
 
-{% block loglink %}
-{% if session == None %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
-{% else %}
-  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
-{% endif %}
-{% endblock %}
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-{% block main %}
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+				</header>
+				<!-- Content -->
+				<section>
+					<!-- Content -->
+					<div class="content">
+						<header>
+							<div class="appTitle">
+								<span>프로필</span><br>
+								<span class="appTitleSub">{{ user[0] }}님 반갑습니다</span>
+							</div>
+						</header> 
+				</section>
+          <a href="/logout"><input type="button" name="" value="로그아웃" class="primary fit loginBtn"></a>
+			</div>
+		</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li>
+							<a href="/">홈</a>
+						</li>
+						<li><a href="/makeMusic">음악 생성</a></li>
+						<li><a href="/musicList">뮤직 리스트</a></li>
+						<li>
+							<span class="opener">내 정보</span>
+							<ul>
+								<li><a href="/myMusicList">내 음악</a></li>
+								<li><a href="/playList">플레이리스트</a></li>
+							</ul>
+						</li>
+						<li><a href="/login">로그인</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 
-      <h1>Profile</h1>
-      <hr>
+	</div>
 
-      <div class="card">
-        <div class="card-body">
-          <h4>{{ user[0] }}</h4>
-          <hr>
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
 
-          <p>{{ user[1] }}</p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% endblock %}
+</html>

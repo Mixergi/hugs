@@ -1,0 +1,263 @@
+/* select */
+.lineTab {
+  font-size: 1em;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #EAEAEA;
+}
+
+.lineTab:hover, .lineTab:focus, .lineTab:disabled,
+.lineTab:not(:disabled):not(.disabled):active, .lineTab:not(:disabled):not(.disabled).active,
+.show>.lineTab.dropdown-toggle,
+.lineTab:not(:disabled):not(.disabled):active:focus, .lineTab:not(:disabled):not(.disabled).active:focus,
+.show>.lineTab.dropdown-toggle:focus {
+  color: #0C36A2;
+  border-bottom: 2px solid #0C36A2;
+}
+
+#musicName {
+  color: black;
+  font-size: 1.2em;
+}
+
+.tabItem {
+  max-height: 28em;
+  overflow-y: scroll;
+  margin: 1.5em 0 2em 0;
+}
+
+.genreSelect, .vibeSelect {
+  background-color: white;
+  border-radius: 0.8em !important;
+  margin-bottom: 1.3em;
+  width: 100%;
+  font-size: 1.1em;
+}
+
+.genreSelect:hover, .genreSelect:focus, .genreSelect.disabled,
+.vibeSelect:hover, .vibeSelect:focus, .vibeSelect:disabled,
+.genreSelect:not(:disabled):not(.disabled):active, .genreSelect:not(:disabled):not(.disabled).active,
+.show>.genreSelect.dropdown-toggle,
+.vibeSelect:not(:disabled):not(.disabled):active, .vibeSelect:not(:disabled):not(.disabled).active,
+.show>.vibeSelect.dropdown-toggle,
+.genreSelect:not(:disabled):not(.disabled):active:focus, .genreSelect:not(:disabled):not(.disabled).active:focus,
+.show>.genreSelect.dropdown-toggle:focus,
+.vibeSelect:not(:disabled):not(.disabled):active:focus, .vibeSelect:not(:disabled):not(.disabled).active:focus,
+.show>.vibeSelect.dropdown-toggle:focus {
+  color: #fff !important;
+  font-weight: bold;
+  background-color: #0C36A2;
+  border-color: none;
+  box-shadow: none;
+}
+
+.makeMusicBtn {
+  border-radius: 0.8em !important;
+  margin-bottom: 1em;
+  outline: none;
+}
+
+.runtimeDiv {
+  text-align: center;
+  margin: 10em 2em;
+}
+
+.runtime {
+  color: #0C36A2;
+}
+
+.runtime>span {
+  font-weight: 400;
+  font-size: 4.5em;
+}
+
+.runtimeTb {
+  width: 1.5em;
+  text-align: center;
+  font-size: 4.5em;
+  color: #0C36A2;
+  font-weight: 500;
+  border: none;
+  outline-color: #0C36A2;
+}
+
+.runtimeTb::placeholder {
+  color: #EAEAEA !important;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid #EAEAEA;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn:hover {
+  color: #212529;
+  text-decoration: none;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: 0.65;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+.nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-left: -6px;
+  margin-top: 0.8rem;
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.2rem 0 0.2rem 0;
+  font-size: 1.2em;
+}
+
+.nav-link:hover, .nav-link:focus {
+  text-decoration: none;
+}
+
+.nav-link.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: -1px;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.nav-tabs .nav-link.disabled {
+  color: #6c757d;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0.25rem;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.nav-fill .nav-item {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.nav-justified .nav-item {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.tab-content>.tab-pane {
+  display: none;
+}
+
+.tab-content>.active {
+  display: block;
+}
+
+/* lyrics */
+.lyricsTitle {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 1em 0 0.5em 0;
+}
+
+.lyricsDiv {
+  border: 1px solid #EAEAEA;
+  border-radius: 1em;
+  padding: 1.3em 0.5em;
+  height: 28em;
+  margin-bottom: 2em;
+  outline: none;
+}
+
+.lyrics {
+  color: black;
+  height: 100%;
+  overflow-y: scroll;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  padding: 0 0.8em;
+  resize: none;
+  border: none;
+  text-align: justify;
+}

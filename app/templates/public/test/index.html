@@ -1,0 +1,212 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block loglink %}
+{% if session == None %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/login'">Login</button>
+{% else %}
+  <button type="button" class="btn btn-dark" onclick="location.href='/logout'">Logout</button>
+{% endif %}
+{% endblock %}
+
+<link rel="stylesheet" href="C:/hugs/app/static/css/service.css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+{% block main %}
+{% if session == None %}
+<section class="section services-section" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Hello, Guest</h2>
+                    <p>Hugs 서비스</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Create A New Song </h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Others Songs</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-comment"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Community</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-image"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Albums</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-th"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Streaming</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-cog"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Advanced Options</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+        </div>
+    </div>
+</section>
+{% else %}
+<section class="section services-section" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Hello, {{session}}</h2>
+                    <p>Hugs 서비스</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Create A New Song </h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Others Songs</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-comment"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Community</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-image"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Albums</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-th"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Streaming</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-cog"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Advanced Options</h5>
+                        <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}
+
+
+

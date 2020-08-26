@@ -1,0 +1,90 @@
+.loginFormDiv {
+  padding: 1em 0;
+}
+
+.signupFormDiv {
+  padding: 0.1em 0;
+}
+
+.inp {
+  position: relative;
+  margin: auto;
+  font-size: 1.3em;
+  margin: 2.5em 0;
+}
+
+.inp .label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+  z-index: -1;
+  color: #C6C6C6;
+}
+
+.inp .border {
+  position: absolute;
+  bottom: -0.3em;
+  left: 0;
+  height: 0.1em;
+  background-color: #EAEAEA;
+  width: 100%;
+}
+
+.inp input {
+  font-size: 0.9em;
+  -webkit-appearance: none;
+  border: 0;
+  font-family: inherit;
+  padding: 0;
+  height: 2em;
+  transition: all 0.15s ease;
+  background-color: transparent;
+  border: 0;
+}
+
+.inp input:focus, .inp input:hover {
+  border: none;
+  box-shadow: none;
+  background: none;
+  outline: none;
+}
+
+.inp input:not(:placeholder-shown)+span {
+  color: #0C36A2;
+  transform: translateY(-24px) scale(0.75);
+}
+
+.inp input:focus+span {
+  color: #0C36A2;
+  transform: translateY(-24px) scale(0.75);
+}
+
+.inp input:focus+span+.border {
+  transform: scaleX(1);
+}
+
+.loginBtn, .signupBtn {
+  border-radius: 0.8em !important;
+  outline: none;
+}
+
+.goSignupBtn {
+  margin-left: 1em;
+  color: #0C36A2;
+  border: 0;
+}
+
+.goSignupBtn:hover, .goSignupBtn:focus {
+  text-decoration: none;
+  color: #0C36A2;
+}
+
+.notUser {
+  margin-top: -1em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #949AA0;
+}
