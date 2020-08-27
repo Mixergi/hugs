@@ -12,13 +12,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/sign.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/service.css') }}">
+	<style>
+		.alert{text-align:center;position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
+		.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
+	</style>
+
 </head>
+
 
 <body class="is-preload">
 
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-danger" role="alert">
+					<span>{{ message }}</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
 	<!-- Wrapper -->
 	<div id="wrapper">
-
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
@@ -86,10 +102,11 @@
 
 	</div>
 
+
 	<!-- Scripts -->
 	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

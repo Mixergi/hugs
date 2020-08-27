@@ -164,7 +164,7 @@ def all():
     
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
 
     if request.method == "POST":
         req = request.form
@@ -183,13 +183,13 @@ def sign_up():
 
         # 1. check a empty field 2.checking mismatched case of password confirmation
         if missing:
-            flash(f"다음이 입력되지 않았습니다 : {', '.join(missing)}", "warning")
+            flash(f"다음이 입력되지 않았습니다 : {', '.join(missing)}")
             return redirect(request.url)
         elif password != conf_password:
-            flash("패스워드가 일치하지 않습니다.", "warning")
+            flash("패스워드가 일치하지 않습니다.")
             return redirect(request.url)
         elif not len(password) >= 6:
-            flash("비밀번호는 최소 6자 이상이여야 합니다.", "warning")
+            flash("비밀번호는 최소 6자 이상이여야 합니다.")
             return redirect(request.url)
         
         # test all of validation test of form
@@ -200,14 +200,14 @@ def sign_up():
         db.commit()
         db.close()
         
-        flash("Account created!", "success")
+        flash("Account created!")
         return redirect(request.url.replace('sign-up','login'))
 
     return render_template("public/signup.html", session=session.get("USERNAME"))
 
 @app.route("/login", methods=["GET","POST"])
 def login():
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','profile'))
     else:
@@ -230,10 +230,10 @@ def login():
                     db.close()
                     return render_template("public/profile.html", user=user_session_container[session["USERNAME"]], status='Logout')
                 else:
-                    flash("잘못된 비밀번호입니다.", "warning")
+                    flash("잘못된 비밀번호입니다.")
                     return redirect(request.url)
             else:
-                flash("존재하지 않는 사용자명입니다.", "warning")
+                flash("존재하지 않는 사용자입니다.")
                 return redirect(request.url)
 
     return render_template("public/login.html", session=session.get("USERNAME"))

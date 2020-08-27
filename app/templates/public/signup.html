@@ -12,10 +12,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/sign.css') }}">
+	<style>
+		.alert{text-align:center;position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
+		.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
+	</style>
 </head>
 
 <body class="is-preload">
-
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-danger" role="alert">
+					<span>{{ message }}</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
 	<!-- Wrapper -->
 	<div id="wrapper">
 
