@@ -80,15 +80,29 @@ def making():
 
 @app.route("/musicList")
 def musicList():
-    return render_template("public/musicList.html", session=session.get("USERNAME"))
+    db, cursor = user_database.get_local_db()
+    sql = """select * from musiclist;"""
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    print(result)
+    end = len(result)
+    return render_template("public/musicList.html", session=session.get("USERNAME"), music=result, end=end)
 
 @app.route("/myMusicList")
 def myMusicList():
-    return render_template("public/myMusicList.html", session=session.get("USERNAME"))
+    if not session.get("USERNAME") is None:
+        return render_template("public/myMusicList.html", session=session.get("USERNAME"))
+    else:
+        flash("로그인이 필요합니다.")
+        return redirect(request.url.replace('myMusicList','login'))
 
 @app.route("/playList")
 def playList():
-    return render_template("public/playList.html", session=session.get("USERNAME"))
+    if not session.get("USERNAME") is None:
+        return render_template("public/playList.html", session=session.get("USERNAME"))
+    else:
+        flash("로그인이 필요합니다.")
+        return redirect(request.url.replace('playList','login'))
 
 @app.route("/playListMusic")
 def playListMusic():
@@ -140,7 +154,7 @@ def upload_audio():
 def streaming_main_page():
     return render_template("public/stream.html", session=session.get("USERNAME"))
     
-@app.route("/streaming/<song_name>")
+@app.route("/musicList/<song_name>")
 def streamwav(song_name):
     def generate():
         with open(f"app/static/audio/uploads/{song_name}.mp3", "rb") as song:
@@ -156,7 +170,7 @@ def about():
 
 @app.route("/all")
 def all():
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
     sql = """select * from accounts;"""
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -246,9 +260,8 @@ def logout():
 @app.route("/profile")
 def profile():
     if not session.get("USERNAME") is None:
-        username = session.get("USERNAME")
         print('checkpoint A')
-        return render_template("public/profile.html", user=user_session_container[username], status='Logout')
+        return render_template("public/profile.html", user=user_session_container[session.get("USERNAME")], status='Logout')
     else:
         print('need login')
         flash("로그인이 필요합니다", "warning")
