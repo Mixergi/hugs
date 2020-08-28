@@ -99,13 +99,36 @@ def myMusicList():
 @app.route("/playList")
 def playList():
     if not session.get("USERNAME") is None:
-        return render_template("public/playList.html", session=session.get("USERNAME"))
+        sql = """select * from playlist;"""
+        result = sql_runner(sql)
+        end = len(result)
+        return render_template("public/playList.html", session=session.get("USERNAME"), playlist=result, end=end)
     else:
         flash("로그인이 필요합니다.")
         return redirect(request.url.replace('playList','login'))
 
+@app.route("/playList/<list_name>")
+def playList_detail(list_name):
+    if not session.get("USERNAME") is None:
+        sql = f"select * from playlist where p_name='{list_name}';"
+        playlist_name = sql_runner(sql)[0][1]
+
+        sql = f"select * from playlist_music where pm_id = (select p_id from playlist where p_name='{playlist_name}');"
+        final_result = sql_runner(sql)
+        end = len(final_result)
+        return render_template("public/playListMusic.html", session=session.get("USERNAME"), name=playlist_name ,playlist=final_result, end=end)
+    else:
+        flash("로그인이 필요합니다.")
+        return redirect(request.url.replace('playList','login'))
+
+def sql_runner(sql):
+    db, cursor = user_database.get_local_db()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    return result
+
 @app.route("/playListMusic")
-def playListMusic():
+def playListMusic():   
     return render_template("public/playListMusic.html", session=session.get("USERNAME"))
 
 @app.route("/select")
@@ -261,7 +284,7 @@ def logout():
 def profile():
     if not session.get("USERNAME") is None:
         print('checkpoint A')
-        return render_template("public/profile.html", user=user_session_container[session.get("USERNAME")], status='Logout')
+        return render_template("public/profile.html", user=str(session.get("USERNAME")), status='Logout')
     else:
         print('need login')
         flash("로그인이 필요합니다", "warning")

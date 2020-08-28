@@ -45,105 +45,17 @@
 									</tr>
 								</thead>
 								<tbody>
+									{% for i in range(0, end) %}
 									<tr>
 										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
 											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 01</span>
+											<span><a href="/playList/{{playlist[i][1]}}">{{playlist[i][1]}}</a></span>
 											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
 												<i class="icon solid fa-ellipsis-v musicMenu"></i>
 											</span>
 										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 02</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 03</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 04</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 05</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 06</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 07</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 08</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 09</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 10</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-folder playBtn"></i>
-											<span>플레이리스트 이름 11</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-										</td>
-									</tr>
+									</tr>	
+									{% endfor %}
 								</tbody>
 							</table>
 						</div>
