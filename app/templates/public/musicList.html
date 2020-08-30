@@ -44,26 +44,16 @@
 									</tr>
 								</thead>
 								<tbody>
+									{% for i in range(0, end) %}
 									<tr>
 										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
 											<i class="icon solid fa-play playBtn"></i>
-											<span>댄스_신남</span>
+											<span>{{music[i][1]}}</span>
 											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
 												<i class="icon solid fa-ellipsis-v musicMenu"></i>
 											</span>
 											<hr>
-											<audio controls><source src="http://localhost:5000/musicList/dance_high" type="audio/mp3"></audio>
-										</td>
-									</tr>
-									<tr>
-										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
-											<i class="icon solid fa-play playBtn"></i>
-											<span>댄스_차분</span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
-												<i class="icon solid fa-ellipsis-v musicMenu"></i>
-											</span>
-											<hr>
-											<audio controls><source src="http://localhost:5000/musicList/dance_low" type="audio/mp3"></audio>
+											<audio controls><source src="http://34.64.77.93:5000/musicList/{{music[i][1]}}" type="audio/x-wav"></audio>
 										</td>
 									</tr>
 								</tbody>
