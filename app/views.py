@@ -88,6 +88,10 @@ def musicList():
     end = len(result)
     return render_template("public/musicList.html", session=session.get("USERNAME"), music=result, end=end)
 
+@app.route("/musicListClone")
+def musicListClone():
+    return render_template("public/musicListClone.html", session=session.get("USERNAME"))
+
 @app.route("/myMusicList")
 def myMusicList():
     if not session.get("USERNAME") is None:
