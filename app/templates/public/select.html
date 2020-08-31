@@ -8,19 +8,14 @@
 
 <head>
 	<title>Hugs - Make Your Own</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
 
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script>
-    $(function(){
-    $("#low").click(function(){
-			$('#linker').attr("href", "http://34.64.77.93:5000/musicListClone");
-    	});
-  	})  
-  </script>
+
 </head>
 
 <body class="is-preload">
@@ -104,9 +99,9 @@
 											<input type="radio" name="Gvibe" id="vibe2">신남
 										</div>
 									</div>
-									<div class="col-2 col-6-xsmall">
+									<div id="low" class="col-2 col-6-xsmall">
 										<div class=" btn genreSelect">
-											<input id="low" type="radio" name="Gvibe" id="vibe2">차분
+											<input type="radio" name="Gvibe" id="vibe2">차분
 										</div>
 									</div>
 								</div>
@@ -164,7 +159,13 @@
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/hugs.js') }}"></script>
 
-
+	<script type="text/javascript">
+    $(function(){
+    $("#low").click(function(){
+			$('#linker').attr("href", "http://34.64.77.93:5000/musicListClone");
+    	});
+  	})  
+  	</script>
 </body>
 
 </html>
