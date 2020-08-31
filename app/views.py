@@ -88,9 +88,13 @@ def musicList():
     end = len(result)
     return render_template("public/musicList.html", session=session.get("USERNAME"), music=result, end=end)
 
-@app.route("/musicListClone")
-def musicListClone():
-    return render_template("public/musicListClone.html", session=session.get("USERNAME"))
+@app.route("/musicListHigh")
+def musicListHigh():
+    return render_template("public/musicListHigh.html", session=session.get("USERNAME"))
+
+@app.route("/musicListLow")
+def musicListLow():
+    return render_template("public/musicListLow.html", session=session.get("USERNAME"))
 
 @app.route("/myMusicList")
 def myMusicList():

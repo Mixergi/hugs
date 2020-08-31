@@ -94,7 +94,7 @@
 
 							<div class="tab-pane fade tabItem" id="vibe" role="tabpanel" aria-labelledby="vibe-tab">
 								<div class="row btn-group-toggle" data-toggle="buttons">
-									<div class="col-2 col-6-xsmall">
+									<div id="high" class="col-2 col-6-xsmall">
 										<div class=" btn genreSelect">
 											<input type="radio" name="Gvibe" id="vibe2">신남
 										</div>
@@ -162,9 +162,13 @@
 	<script type="text/javascript">
     $(function(){
     $("#low").click(function(){
-			$('#linker').attr("href", "http://34.64.77.93:5000/musicListClone");
+			$('#linker').attr("href", "http://34.64.77.93:5000/musicListLow");
     	});
   	})  
+	$("#high").click(function(){
+			$('#linker').attr("href", "http://34.64.77.93:5000/musicListHigh");
+    	});
+  	})   
   	</script>
 </body>
 
