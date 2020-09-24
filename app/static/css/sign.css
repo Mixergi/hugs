@@ -53,12 +53,12 @@
 }
 
 .inp input:not(:placeholder-shown)+span {
-  color: #0C36A2;
+  color: #6654F1;
   transform: translateY(-24px) scale(0.75);
 }
 
 .inp input:focus+span {
-  color: #0C36A2;
+  color: #6654F1;
   transform: translateY(-24px) scale(0.75);
 }
 
@@ -73,18 +73,18 @@
 
 .goSignupBtn {
   margin-left: 1em;
-  color: #0C36A2;
+  color: #6654F1;
   border: 0;
 }
 
 .goSignupBtn:hover, .goSignupBtn:focus {
   text-decoration: none;
-  color: #0C36A2;
+  color: #6654F1;
 }
 
 .notUser {
-  margin-top: -1em;
-  font-size: 1em;
+  margin-top: -0.8em;
+  font-size: 1.1em;
   font-weight: bold;
   color: #949AA0;
 }

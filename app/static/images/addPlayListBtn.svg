@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="addPlayListBtn" transform="translate(4835 -22478)">
+    <circle id="타원_262" data-name="타원 262" cx="30" cy="30" r="30" transform="translate(-4835 22478)" fill="#6654f1"/>
+    <path id="패스_1230" data-name="패스 1230" d="M24.578,17.048h-7.53v7.53a1.506,1.506,0,1,1-3.012,0v-7.53H6.506a1.506,1.506,0,1,1,0-3.012h7.53V6.506a1.506,1.506,0,0,1,3.012,0v7.53h7.53a1.506,1.506,0,1,1,0,3.012Z" transform="translate(-4820.5 22492.5)" fill="#fff" stroke="#fff" stroke-width="1"/>
+  </g>
+</svg>

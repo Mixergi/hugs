@@ -16,7 +16,6 @@ from flask import send_file, send_from_directory, safe_join, abort
 from flask import flash
 from flask import stream_with_context
 
-
 class Database:
     def __init__(self, user, port):
         self._user = user
@@ -80,10 +79,8 @@ def making():
 
 @app.route("/musicList")
 def musicList():
-    db, cursor = user_database.get_db()
     sql = """select * from musiclist;"""
-    cursor.execute(sql)
-    result = cursor.fetchall()
+    result = sql_runner(sql)
     print(result)
     end = len(result)
     return render_template("public/musicList.html", session=session.get("USERNAME"), music=result, end=end)
@@ -130,7 +127,7 @@ def playList_detail(list_name):
         return redirect(request.url.replace('playList','login'))
 
 def sql_runner(sql):
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
     cursor.execute(sql)
     result = cursor.fetchall()
     return result
@@ -201,15 +198,13 @@ def about():
 
 @app.route("/all")
 def all():
-    db, cursor = user_database.get_db()
     sql = """select * from accounts;"""
-    cursor.execute(sql)
-    result = cursor.fetchall()
+    result = sql_runner(sql)
     return "all members : " + str(result)
     
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
 
     if request.method == "POST":
         req = request.form
@@ -252,7 +247,7 @@ def sign_up():
 
 @app.route("/login", methods=["GET","POST"])
 def login():
-    db, cursor = user_database.get_db()
+    db, cursor = user_database.get_local_db()
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','profile'))
     else:
@@ -270,10 +265,9 @@ def login():
             if result:
                 if str(result[0][2]) == str(password):
                     container(result[0])
-                    print("[0][0] : ", result[0][0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
-                    return render_template("public/profile.html", user=user_session_container[session["USERNAME"]], status='Logout')
+                    return render_template("public/profile.html", user=user_session_container[session["USERNAME"]][0], status='Logout')
                 else:
                     flash("잘못된 비밀번호입니다.")
                     return redirect(request.url)
