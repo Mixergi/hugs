@@ -146,7 +146,7 @@ def signup():
 
 @app.route("/terms")
 def terms():
-    return render_template("public/terms.html", session=session.get("USERNAME"))
+    return render_template("public/Hugs.html", session=session.get("USERNAME"))
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_image():
@@ -281,10 +281,6 @@ def login():
 def logout():
     session.pop("USERNAME", None)
     return redirect(url_for("index"))
-
-@app.route("/terms")
-def terms():
-    return render_template('public/Hugs.html')
 
 @app.route("/profile")
 def profile():
