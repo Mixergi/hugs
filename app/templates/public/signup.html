@@ -7,37 +7,22 @@
 <html>
 
 <head>
-	<title>Hugs - Make Your Own</title>
+	<title>Elements - Editorial by HTML5 UP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/sign.css') }}">
-	<style>
-		.alert{text-align:center;position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
-		.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
-	</style>
+	<link rel="stylesheet" href="static/css/main.css" />
+	<link rel="stylesheet" href="static/css/sign.css" />
 </head>
 
 <body class="is-preload">
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			{% for message in messages %}
-				<div class="alert alert-danger" role="alert">
-					<span>{{ message }}</span>
-					</button>
-				</div>
-			{% endfor %}
-		{% endif %}
-	{% endwith %}
+
 	<!-- Wrapper -->
 	<div id="wrapper">
 
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<!-- Header -->
-				<header id="header">
-				</header>
+				<img src="static/images/prevBtn.svg" alt="" class="prevBtn" onclick="location.href='login.html'">
 				<!-- Content -->
 				<section>
 					<!-- Content -->
@@ -53,7 +38,7 @@
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="email" id="inp" placeholder="&nbsp;" name="email">
+									<input type="text" id="inp" placeholder="&nbsp;" name="email">
 									<span class="label">이메일</span>
 									<span class="border"></span>
 								</label>
@@ -67,7 +52,7 @@
 									<span class="label">비밀번호 확인</span>
 									<span class="border"></span>
 								</label>
-								<input type="submit" name="" value="회원가입" class="primary fit signupBtn">
+								<input type="submit" name="" value="회원가입" class="hugsBtn fit signupBtn">
 							</form>
 						</div>
 					</div>
@@ -75,42 +60,16 @@
 
 			</div>
 		</div>
-
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li>
-							<a href="/">홈</a>
-						</li>
-						<li><a href="/makeMusic">음악 생성</a></li>
-						<li><a href="/musicList">뮤직 리스트</a></li>
-						<li>
-							<span class="opener">내 정보</span>
-							<ul>
-								<li><a href="/myMusicList">내 음악</a></li>
-								<li><a href="/playList">플레이리스트</a></li>
-							</ul>
-						</li>
-						<li><a href="/login">로그인</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
+		<!-- <div id="sidebar">
+		</div> -->
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/browser.min.js"></script>
+	<script src="static/js/breakpoints.min.js"></script>
+	<script src="static/js/util.js"></script>
+	<script src="static/js/main.js"></script>
 
 </body>
 

@@ -116,10 +116,10 @@ SETTINGS
 .c-progressbar {
   --cProgressBarUnit: "%";
   --cProgressBarSize: 70vmin;
-  --cProgressBarColor: #0C36A2;
+  --cProgressBarColor: #6654F1;
   --cProgressBarValueFontFamily: inherit;
   --cProgressBarValueFontSize: 9vmin;
   --cProgressBarValueFontWeight: 700;
   --cProgressBarStrokeWidth: 3vmin;
-  --cProgressBarValueTextColor: #0C36A2;
+  --cProgressBarValueTextColor: #6654F1;
 }

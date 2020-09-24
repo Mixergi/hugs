@@ -1,0 +1,69 @@
+.appTitleSub {
+  font-size: 0.6em;
+  font-weight: lighter;
+}
+
+.bestMusicBtn, .makeMusicBtn,
+.genreBtn, .lyricsBtn {
+  height: 11rem;
+  border-radius: 2em;
+  outline: none;
+  text-align: left;
+  padding: 0.8em;
+  text-transform: none;
+  white-space: normal;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  color: white;
+  box-shadow: 0 0.3em 0.6em 0 rgba(0, 0, 0, 0.16);
+}
+
+.bestMusicBtn {
+  height: 8rem;
+  margin-bottom: 2.5em;
+  background-color: #FF4A9B;
+}
+
+.bestMusicBtn:focus, .bestMusicBtn:active, .bestMusicBtn:hover {
+  background-color: #FF4A9B;
+  color: white;
+}
+
+.makeMusicBtn:focus, .makeMusicBtn:active, .makeMusicBtn:hover {
+  background-color: #672ED6;
+  color: white;
+}
+
+.makeMusicBtn {
+  height: 12rem;
+  background-color: #672ED6;
+}
+
+.btnTitle {
+  font-size: 1.3em;
+}
+
+.btnSubTitle {
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+.lyricsBtn {
+  margin-bottom: 2.5em;
+  background-color: #D5D1FF;
+  color: #6654F1;
+}
+
+.genreBtn {
+  background-color: #6654F1;
+}
+
+.genreBtn:focus, .genreBtn:active, .genreBtn:hover {
+  outline: none;
+}
+
+.lyricsBtn:focus, .lyricsBtn:active, .lyricsBtn:hover {
+  outline: none;
+  background-color: #D5D1FF;
+  color: #6654F1;
+}

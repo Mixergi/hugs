@@ -7,13 +7,14 @@
 <html>
 
 <head>
-	<title>Hugs - Make Your Own</title>
+	<title>Elements - Editorial by HTML5 UP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+	<link rel="stylesheet" href="static/css/main.css" />
+	<link rel="stylesheet" href="static/css/index_mam.css" />
+
 </head>
- 
+
 <body class="is-preload">
 
 	<!-- Wrapper -->
@@ -36,15 +37,13 @@
 							</div>
 						</header>
 						<div>
-							<!-- <input type="button" name="" value="뮤직 리스트" class="primary fit musicListBtn"> -->
-							<button type="button" name="button" class="primary fit bestMusicBtn" onclick="location.href='/musicList'">
+							<button type="button" name="button" class="fit bestMusicBtn" onclick="location.href='musicList.html'">
 								<span class="btnTitle">Best music</span><br>
 								<span class="btnSubTitle">인기가 좋은 음악들을 들어보세요.</span>
 							</button>
 						</div>
 						<div>
-							<!-- <input type="button" name="" value="음악 생성" class="primary fit makeMusicBtn"> -->
-							<button type="button" name="button" class="primary fit makeMusicBtn" onclick="location.href='/makeMusic'">
+							<button type="button" name="button" class="fit makeMusicBtn" onclick="location.href='makeMusic.html'">
 								<span class="btnTitle">Make a music</span><br>
 								<span class="btnSubTitle">당신의 취향에 맞게 AI가 음악을 만들어 드립니다.</span>
 							</button>
@@ -85,11 +84,12 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/browser.min.js"></script>
+	<script src="static/js/breakpoints.min.js"></script>
+	<script src="static/js/util.js"></script>
+	<script src="static/js/main.js"></script>
+
 </body>
 
 </html>

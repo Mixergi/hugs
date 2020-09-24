@@ -7,11 +7,11 @@
 <html>
 
 <head>
-	<title>Hugs - Make Your Own</title>
+	<title>Elements - Editorial by HTML5 UP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+	<link rel="stylesheet" href="static/css/main.css" />
+	<link rel="stylesheet" href="static/css/index_mam.css" />
 </head>
 
 <body class="is-preload">
@@ -22,21 +22,30 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<!-- Header -->
-				<header id="header">
-				</header>
+				<img src="static/images/prevBtn.svg" alt="" class="prevBtn" onclick="location.href='/'">
 				<!-- Content -->
 				<section>
 					<!-- Content -->
 					<div class="content">
 						<header>
-							<div class="appTitle">음악 생성</div>
+							<div class="appTitle">Make a Music</div>
 						</header>
 						<div>
-							<input type="button" name="" value="장르" class="fit genreBtn" onclick="location.href='/select'">
+							<button type="button" name="button" class="fit lyricsBtn" onclick="location.href='/lyrics'">
+								<span class="btnTitle">가사</span><br>
+								<span class="btnSubTitle">당신이 원하는 가사를 마음껏 적어보세요</span>
+							</button>
 						</div>
 						<div>
-							<input type="button" name="" value="가사" class="primary fit lyricsBtn" onclick="location.href='/lyrics'">
+							<button type="button" name="button" class="fit genreBtn" onclick="location.href='/select'">
+								<!-- <img src="static/images/genre_img.png" alt="" style="float: left; height: 100%;">
+								<div class="" style="float: left;">
+									<span class="btnTitle">장르</span><br>
+									<span class="btnSubTitle">당신의 취향에 맞는<br>장르를 선택해보세요</span>
+								</div> -->
+								<span class="btnTitle">장르</span><br>
+								<span class="btnSubTitle">당신의 취향에 맞는 장르를 선택해보세요</span>
+							</button>
 						</div>
 					</div>
 				</section>
@@ -44,41 +53,14 @@
 			</div>
 		</div>
 
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li>
-							<a href="/">홈</a>
-						</li>
-						<li><a href="/makeMusic">음악 생성</a></li>
-						<li><a href="/musicList">뮤직 리스트</a></li>
-						<li>
-							<span class="opener">내 정보</span>
-							<ul>
-								<li><a href="/myMusicList">내 음악</a></li>
-								<li><a href="/playList">플레이리스트</a></li>
-							</ul>
-						</li>
-						<li><a href="/login">로그인</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/browser.min.js"></script>
+	<script src="static/js/breakpoints.min.js"></script>
+	<script src="static/js/util.js"></script>
+	<script src="static/js/main.js"></script>
 
 </body>
 

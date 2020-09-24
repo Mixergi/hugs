@@ -1,10 +1,19 @@
+.a {
+  background-color: black;
+}
+
+.subTitle {
+  margin-top: 3em;
+}
+
 .musicDiv {
   margin-bottom: 1.5em;
-  border: 1px solid #EAEAEA;
+  border: 1px solid transparent;
   border-radius: 1em;
   font-size: 1.3em !important;
   color: black;
   padding: 0.7em !important;
+  background-color: #F8F8FB;
 }
 
 .musicDiv > span {
@@ -16,7 +25,7 @@
 .show>.musicDiv.dropdown-toggle,
 .musicDiv:not(:disabled):not(.disabled):active:focus, .musicDiv:not(:disabled):not(.disabled).active:focus,
 .show>.musicDiv.dropdown-toggle:focus {
-  background-color: #0C36A2;
+  background-color: #6654F1;
   color: white !important;
   border: none;
   outline: none;
@@ -139,7 +148,7 @@
   text-align: center;
   white-space: nowrap;
   color: white !important;
-  background-color: #0C36A2;
+  background-color: #6654F1;
   border-radius: 0.375rem;
 }
 
@@ -227,17 +236,74 @@ select.custom-select.custom-select-sm.form-control.form-control-sm {
 }
 
 .modal-content {
-  border-radius: 10px !important;
+  width: 100%;
+  border-radius: 1em !important;
+  text-align: center;
+  font-size: 1.3em;
 }
 
 .modal-body {
-  padding: 24px 8px 10px;
+  padding: 0;
+  border-radius: 1.2em !important;
 }
 
-.modal-footer {
+.modal-menu, .subModal-title {
+  padding: 1em 1.5em;
+  border-bottom: 1px solid #EAEAEA;
+  color: #6654F1;
+}
+
+.modal-menu:last-child {
+  border: none !important;
+}
+
+.subModal-title {
+  border: none;
+}
+
+.modal_inp, .modal_select {
+  border: none !important;
+  border-bottom: 1px solid #DADADA !important;
+  border-radius: 0 !important;
+  margin: 1em 0;
+}
+
+.modal-footer-left, .modal-footer-right {
+  width: 50%;
   border: 0 !important;
-  border-radius: 0 0 1em 1em !important;
-  padding: 0 !important;
+  border-top: 1px solid #EAEAEA !important;
+  padding: 0.6em !important;
+  color: #6654F1;
+}
+
+.modal-footer-left {
+  float: left;
+  border-right: 1px solid #EAEAEA !important;
+}
+
+.modal-footer-right {
+  float: right;
+}
+
+.subModal-title {
+  color: black;
+  text-align: left;
+  font-weight: bold;
+}
+
+.modal-menu:first-child {
+  border-top-left-radius: 1em !important;
+  border-top-right-radius: 1em !important;
+}
+
+.modal-menu:last-child {
+  border-bottom-left-radius: 1em !important;
+  border-bottom-right-radius: 1em !important;
+}
+
+.modal-menu:hover, .modal-menu:focus, .modal-menu:active, .modal-menu:visited {
+  background-color: #6654F1;
+  color: white;
 }
 
 .musicDeleteBtn {
@@ -258,7 +324,7 @@ select.custom-select.custom-select-sm.form-control.form-control-sm {
 
 .myMusicDownloadBtn, .musicDownloadBtn {
   height: 45px;
-  background-color: #0C36A2;
+  background-color: #6654F1;
   color: white !important;
   margin: 0 !important;
   border-radius: 0 !important;
@@ -307,11 +373,186 @@ table.dataTable {
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #0C36A2 !important;
-  border-color: #0C36A2 !important;
+  background-color: #6654F1 !important;
+  border-color: #6654F1 !important;
 }
 
 .search-input {
   box-shadow: none !important;
   color: black !important;
+  border-radius: 1em !important;
+  height: 3em !important;
+  font-size: 1.1em !important;
+}
+
+.addMusicBtn, .addPlayListBtn {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+}
+
+.addMusicBtn {
+  bottom: 5em;
+}
+
+.addPlayListBtn > a > img, .addMusicBtn > a > img {
+  border-radius: 100%;
+  box-shadow: 0 0.3em 0.6em 0 rgba(0, 0, 0, 0.16);
+  width: 50px;
+  height: 50px;
+}
+
+#audiowrap,
+#plwrap {
+  margin: 0 auto;
+}
+
+#tracks {
+  border: 1px solid green;
+  font-size: 0;
+  position: relative;
+  text-align: center;
+}
+
+#nowPlay {
+  display: block;
+  font-size: 0;
+}
+
+#nowPlay span {
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: top;
+}
+
+#plList {
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+#plList:last-child {
+  margin-bottom: 4rem;
+}
+
+#plList li {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 16px 0;
+  border-radius: 1rem;
+  margin-bottom: 1em !important;
+  background-color: #F8F8FB;
+  color: black;
+}
+
+#plList li:hover {
+  background-color: #6654F1;
+  color: white;
+}
+
+.plItem {
+  position: relative;
+}
+
+.plTitle {
+  left: 50px;
+  overflow: hidden;
+  position: absolute;
+  right: 65px;
+  text-overflow: ellipsis;
+  top: 0;
+  white-space: nowrap;
+}
+
+.plNum {
+  padding-left: 21px;
+  width: 25px;
+}
+
+.plLength {
+  padding-left: 21px;
+  position: absolute;
+  right: 21px;
+  top: 0;
+}
+
+.plSel {
+  background-color: #6654F1;
+  color: white;
+}
+
+.plSel:hover,
+.plSel:active,
+.plSel:focus {
+  background-color: #6654F1;
+  color: white;
+  cursor: default !important;
+}
+
+#tracks a {
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 2.3rem;
+  line-height: .175;
+  text-decoration: none;
+  transition: background .3s ease;
+}
+
+#tracks a:last-child {
+  margin-left: 30px;
+}
+
+#tracks a:hover,
+#tracks a:active {
+  color: #000 !important;
+}
+
+.plyr--audio .plyr__controls {
+  background-color: #6654F1;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: white;
+  width: 100%;
+}
+
+a.plyr__controls__item.plyr__control:hover,
+.plyr--audio .plyr__controls button:hover,
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr__play-large {
+  background-color: transparent;
+  color: white !important;
+}
+
+.plyr__progress--played,
+.plyr__volume--display {
+  color: rgba(0, 0, 0, .1);
+}
+
+.plyr--audio .plyr__progress--buffer,
+.plyr--audio .plyr__volume--display {
+  background: transparent;
+  color: white !important;
+}
+
+.plyr--audio .plyr__progress--buffer {
+  color: rgba(0, 0, 0, .1);
+}
+
+.plyr--full-ui input[type=range] {
+  color: white;
+}
+
+@media only screen and (max-width:600px) {
+  #nowPlay span#npAction {
+    display: none;
+  }
+
+  #nowPlay span#npTitle {
+    display: block;
+    width: 100%;
+  }
 }

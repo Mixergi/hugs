@@ -7,15 +7,15 @@
 <html>
 
 <head>
-	<title>Hugs - Make Your Own</title>
+	<title>Elements - Editorial by HTML5 UP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.0/css/mdb.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.amber-pink.min.css">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/musicList.css') }}">
+	<link rel="stylesheet" href="static/css/main.css" />
+	<link rel="stylesheet" href="static/css/musicList.css" />
 
 </head>
 
@@ -37,49 +37,94 @@
 
 							<!-- tabela -->
 							<table id="tabela1" class="table" width="100%" tabindex="0" aria-label="results" style="border-spacing: 0 16px;">
-								<thead>
-									<tr>
-										<th tabindex="0" aria-label="play">
-											플레이리스트 명
-										</th>
-									</tr>
-								</thead>
+								<hr style="margin: 1.5em 0 0.5em 0;">
 								<tbody>
-									{% for i in range(0, end) %}
 									<tr>
 										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
 											<i class="icon solid fa-folder playBtn"></i>
-											<span><a href="/playList/{{playlist[i][1]}}">{{playlist[i][1]}}</a></span>
-											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
+											<span>플레이리스트 이름 01</span>
+											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#musicListModal">
 												<i class="icon solid fa-ellipsis-v musicMenu"></i>
 											</span>
 										</td>
-									</tr>	
-									{% endfor %}
+									</tr>
+									<tr>
+										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
+											<i class="icon solid fa-folder playBtn"></i>
+											<span>플레이리스트 이름 02</span>
+											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#musicListModal">
+												<i class="icon solid fa-ellipsis-v musicMenu"></i>
+											</span>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
 						<!--end div table-->
+						<div class="addPlayListBtn">
+							<a href="#">
+								<img src="static/images/addPlayListBtn.svg" alt="" data-placement="top" data-toggle="modal" href="#" data-target="#addListModal">
+							</a>
+						</div>
 
 						<!-- modal section -->
 						<!-- Modal -->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal fade" id="musicListModal" tabindex="-1" role="dialog" aria-labelledby="musicListModalTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-body">
-										<label class="inputLabel">이름 수정</label>
-										<div class="input-group col-12">
-											<input type="text" name="demo-name" id="demo-name" value="플레이리스트 이름" class="form-control">
-										  <div class="input-group-append">
-										    <button class="input-group-text musicEditBtn" type="button" id="button-addon2">
-													<span>저장</span>
-												</button>
-										  </div>
+										<div class="modal-menu col-12" data-placement="top" data-toggle="modal" href="#" data-target="#rename" data-dismiss="modal">
+											<div>이름 수정</div>
+										</div>
+										<div class="modal-menu col-12">
+											<div>다운로드</div>
+										</div>
+										<div class="modal-menu col-12">
+											<div>삭제</div>
 										</div>
 									</div>
-									<div class="modal-footer">
-										<button type="button" name="button" class="musicDeleteBtn">삭제</button>
-										<button type="button" name="button" class="myMusicDownloadBtn">다운로드</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal fade" id="rename" tabindex="-1" role="dialog" aria-labelledby="renameTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-body">
+										<div class="subModal-title col-12">
+											<div>이름 수정</div>
+											<div class="">
+												<input type="text" name="" value="" class="modal_inp" placeholder="선택된 플레이리스트 이름">
+											</div>
+										</div>
+										<div class="modal-footer-left" data-dismiss="modal">
+											취소
+										</div>
+										<div class="modal-footer-right" data-dismiss="modal">
+											확인
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- <i class="fa fa-search"></i> -->
+						<div class="modal fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="addListTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-body">
+										<div class="subModal-title col-12">
+											<div>플레이리스트 추가</div>
+											<div class="">
+												<input type="text" name="" value="" class="modal_inp" placeholder="플레이리스트 이름">
+											</div>
+										</div>
+										<div class="modal-footer-left" data-dismiss="modal">
+											취소
+										</div>
+										<div class="modal-footer-right" data-dismiss="modal">
+											확인
+										</div>
 									</div>
 								</div>
 							</div>
@@ -89,7 +134,7 @@
 
 			</div>
 		</div>
-
+		
 		<!-- Sidebar -->
 		<div id="sidebar">
 			<div class="inner">
@@ -112,7 +157,7 @@
 							</ul>
 						</li>
 						<li><a href="/login">로그인</a></li>
-					</ul>	
+					</ul>
 				</nav>
 			</div>
 		</div>
@@ -120,13 +165,12 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/musicList.js') }}"></script>
-
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/browser.min.js"></script>
+	<script src="static/js/breakpoints.min.js"></script>
+	<script src="static/js/util.js"></script>
+	<script src="static/js/main.js"></script>
+	<script src="static/js/musicList.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
