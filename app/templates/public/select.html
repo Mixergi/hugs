@@ -7,15 +7,11 @@
 <html>
 
 <head>
-	<title>Hugs - Make Your Own</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Elements - Editorial by HTML5 UP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
-
-	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-
+	<link rel="stylesheet" href="static/css/main.css" />
+	<link rel="stylesheet" href="static/css/select.css" />
 </head>
 
 <body class="is-preload">
@@ -26,14 +22,16 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
+				<img src="static/images/prevBtn.svg" alt="" class="prevBtn" onclick="location.href='/makeMusic'">
 				<!-- Content -->
 				<section>
 					<!-- Content -->
 					<div class="content">
 						<header>
-							<div class="subTitle">곡명</div>
+							<div class="subTitle">Make</div>
 						</header>
-						<div class="row gtr-uniform">
+						<div class="gtr-uniform">
+							<div class="musicNameTitle">곡 명</div>
 							<div class="col-12">
 								<input type="text" name="musicName" id="musicName" value="" placeholder="곡 명">
 							</div>
@@ -42,9 +40,6 @@
 						<ul class="nav" id="pills-tab" role="tablist">
 							<li class="nav-item" role="presentation" style="margin-right: 0.8em;">
 								<a class="nav-link active lineTab" id="genre-tab" data-toggle="pill" href="#genre" role="tab" aria-controls="genre" aria-selected="true">장르</a>
-							</li>
-							<li class="nav-item" role="presentation" style="margin-right: 0.8em;">
-								<a class="nav-link lineTab" id="vibe-tab" data-toggle="pill" href="#vibe" role="tab" aria-controls="vibe" aria-selected="false">분위기</a>
 							</li>
 							<li class="nav-item" role="presentation">
 								<a class="nav-link lineTab" id="runtime-tab" data-toggle="pill" href="#runtime" role="tab" aria-controls="runtime" aria-selected="false">노래길이</a>
@@ -66,7 +61,7 @@
 									</div>
 									<div class="col-2 col-6-xsmall">
 										<div class=" btn genreSelect">
-											<input type="radio" name="Ggenre" id="genre1">랩/힙합
+											<input type="radio" name="Ggenre" id="genre1">힙합
 										</div>
 									</div>
 									<div class="col-2 col-6-xsmall">
@@ -76,12 +71,7 @@
 									</div>
 									<div class="col-2 col-6-xsmall">
 										<div class=" btn genreSelect">
-											<input type="radio" name="Ggenre" id="genre1">인디음악
-										</div>
-									</div>
-									<div class="col-2 col-6-xsmall">
-										<div class=" btn genreSelect">
-											<input type="radio" name="Ggenre" id="genre1">록/메탈
+											<input type="radio" name="Ggenre" id="genre1">인디
 										</div>
 									</div>
 									<div class="col-2 col-6-xsmall">
@@ -89,19 +79,9 @@
 											<input type="radio" name="Ggenre" id="genre1">포크/블루스
 										</div>
 									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade tabItem" id="vibe" role="tabpanel" aria-labelledby="vibe-tab">
-								<div class="row btn-group-toggle" data-toggle="buttons">
-									<div id="high" class="col-2 col-6-xsmall">
+									<div class="col-2 col-6-xsmall">
 										<div class=" btn genreSelect">
-											<input type="radio" name="Gvibe" id="vibe2">신남
-										</div>
-									</div>
-									<div id="low" class="col-2 col-6-xsmall">
-										<div class=" btn genreSelect">
-											<input type="radio" name="Gvibe" id="vibe2">차분
+											<input type="radio" name="Ggenre" id="genre1">록/메탈
 										</div>
 									</div>
 								</div>
@@ -115,61 +95,23 @@
 								</div>
 							</div>
 						</div>
-						<a id="linker" href="http://34.64.77.93:5000/musicList"><input type="button" name="" value="노래 생성" class="primary fit makeMusicBtn"></a>
+						<input type="button" name="" value="노래 생성" class="hugsBtn fit makeMusicBtn" onclick="location.href='/making'">
 					</div>
 				</section>
 
 			</div>
 		</div>
 
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li>
-							<a href="/">홈</a>
-						</li>
-						<li><a href="/makeMusic">음악 생성</a></li>
-						<li><a href="/musicList">뮤직 리스트</a></li>
-						<li>
-							<span class="opener">내 정보</span>
-							<ul>
-								<li><a href="/myMusicList">내 음악</a></li>
-								<li><a href="/playList">플레이리스트</a></li>
-							</ul>
-						</li>
-						<li><a href="/login">로그인</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/hugs.js') }}"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/browser.min.js"></script>
+	<script src="static/js/breakpoints.min.js"></script>
+	<script src="static/js/util.js"></script>
+	<script src="static/js/main.js"></script>
+	<script src="static/js/hugs.js"></script>
 
-	<script type="text/javascript">
-    $(function(){
-    $("#high").click(function(){
-			$('#linker').attr("href", "http://34.64.77.93:5000/musicListHigh");
-    	});
-  
-	$("#low").click(function(){
-			$('#linker').attr("href", "http://34.64.77.93:5000/musicListLow");
-    	});
-	});
-  	</script>
 </body>
 
 </html>

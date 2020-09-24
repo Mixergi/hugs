@@ -11,13 +11,27 @@
 .show>.lineTab.dropdown-toggle,
 .lineTab:not(:disabled):not(.disabled):active:focus, .lineTab:not(:disabled):not(.disabled).active:focus,
 .show>.lineTab.dropdown-toggle:focus {
-  color: #0C36A2;
-  border-bottom: 2px solid #0C36A2;
+  color: #6654F1;
+  border-bottom: 2px solid #6654F1;
 }
 
 #musicName {
   color: black;
   font-size: 1.2em;
+  border-radius: 0.8rem;
+}
+
+.gtr-uniform {
+  background-color: #6654F1;
+  color: white;
+  padding: 1.3em 1em;
+  border-radius: 0.8rem;
+}
+
+.musicNameTitle {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 .tabItem {
@@ -27,11 +41,12 @@
 }
 
 .genreSelect, .vibeSelect {
-  background-color: white;
-  border-radius: 0.8em !important;
+  background-color: #F8F8FB !important;
+  border-radius: 0.8rem !important;
   margin-bottom: 1.3em;
   width: 100%;
   font-size: 1.1em;
+  border: none !important;
 }
 
 .genreSelect:hover, .genreSelect:focus, .genreSelect.disabled,
@@ -46,13 +61,13 @@
 .show>.vibeSelect.dropdown-toggle:focus {
   color: #fff !important;
   font-weight: bold;
-  background-color: #0C36A2;
+  background-color: #6654F1 !important;
   border-color: none;
   box-shadow: none;
 }
 
 .makeMusicBtn {
-  border-radius: 0.8em !important;
+  border-radius: 0.8rem !important;
   margin-bottom: 1em;
   outline: none;
 }
@@ -63,7 +78,7 @@
 }
 
 .runtime {
-  color: #0C36A2;
+  color: #6654F1;
 }
 
 .runtime>span {
@@ -75,10 +90,10 @@
   width: 1.5em;
   text-align: center;
   font-size: 4.5em;
-  color: #0C36A2;
+  color: #6654F1;
   font-weight: 500;
   border: none;
-  outline-color: #0C36A2;
+  outline-color: #6654F1;
 }
 
 .runtimeTb::placeholder {
@@ -100,7 +115,7 @@
   padding: 0.5rem 0.75rem;
   font-size: 0.9rem;
   line-height: 1.5;
-  border-radius: 0.25rem;
+  border-radius: 0.2r5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -203,7 +218,7 @@ fieldset:disabled a.btn {
 }
 
 .nav-pills .nav-link {
-  border-radius: 0.25rem;
+  border-radius: 0.2r5rem;
 }
 
 .nav-pills .nav-link.active,
@@ -243,7 +258,7 @@ fieldset:disabled a.btn {
 
 .lyricsDiv {
   border: 1px solid #EAEAEA;
-  border-radius: 1em;
+  border-radius: 1emr;
   padding: 1.3em 0.5em;
   height: 28em;
   margin-bottom: 2em;
