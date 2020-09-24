@@ -7,118 +7,102 @@
 <html>
 
 <head>
-  <title>Elements - Editorial by HTML5 UP</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.0/css/mdb.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.amber-pink.min.css">
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css">
-  <link rel="stylesheet" href="static/css/main.css" />
-  <link rel="stylesheet" href="static/css/musicList.css" />
+	<title>Hugs - Make Your Own</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.0/css/mdb.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.amber-pink.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/musicList.css') }}">
 
 </head>
 
 <body class="is-preload">
-  <div id="wrapper">
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
-        <!-- Content -->
-        <section>
-          <!-- Content -->
-          <div class="content">
-            <!-- Header -->
+	<div id="wrapper">
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Content -->
+				<section>
+					<!-- Content -->
+					<div class="content">
+						<!-- Header -->
+						<header>
+							<div class="subTitle">뮤직 리스트</div>
+						</header>
+						<div class="table-responsive results" id="header-table">
+							<input type="text" class="text search-input" placeholder="노래 검색" id="myInput">
+							<!-- tabela -->
+							<table id="tabela1" class="table" width="100%" tabindex="0" aria-label="results" style="border-spacing: 0 16px;">
+								<thead>
+									<tr>
+										<th tabindex="0" aria-label="play">
+											곡 명
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for i in range(0, end) %}
+									<tr>
+										<td class="align-middle musicDiv" style="display: table-cell;" tabindex="0">
+											<i class="icon solid fa-play playBtn"></i>
+											<span>{{music[i][1]}}</span>
+											<span tooltip="details" title="" data-placement="top" data-toggle="modal" href="#" data-target="#exampleModalCenter">
+												<i class="icon solid fa-ellipsis-v musicMenu"></i>
+											</span>
+											<hr>
+											<audio controls><source src="http://34.64.77.93:5000/musicList/{{music[i][1]}}" type="audio/x-wav"></audio>
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<!--end div table-->
 
-            <header>
-              <div class="subTitle">뮤직 리스트</div>
-              <div class="mb-3">
-            </header>
-            <div class="table-responsive results" id="header-table">
-              <input type="text" class="text search-input" placeholder="노래 검색" onkeyup="myFunction()" id="myInput">
-              <hr style="margin: 1.5em 0;">
-              <ul id="plList"></ul>
-            </div>
-            <div id="audiowrap">
-              <div id="audio0">
-                <audio id="audio1" preload controls></audio>
-              </div>
-            </div>
-
-            <!-- modal section -->
-            <!-- Modal -->
-						<div class="modal fade" id="musicListModal" tabindex="-1" role="dialog" aria-labelledby="musicListModalTitle" aria-hidden="true">
+						<!-- modal section -->
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-body">
-										<div class="modal-menu col-12" data-placement="top" data-toggle="modal" href="#" data-target="#share" data-dismiss="modal">
-											<div>공유</div>
+										<label class="inputLabel">공유</label>
+										<div class="input-group col-12">
+										  <input type="text" class="form-control" value="링크링크링크링크링크링크링크링크" id="musicURL" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+										  <div class="input-group-append">
+										    <button class="input-group-text musicEditBtn" type="button" id="button-addon2" onclick="url_copy()">
+													<span>URL 복사</span>
+												</button>
+										  </div>
 										</div>
-										<div class="modal-menu col-12" data-placement="top" data-toggle="modal" href="#" data-target="#addList" data-dismiss="modal">
-											<div>내 리스트에 담기</div>
+										<label class="inputLabel">내 리스트에 담기</label>
+										<div class="input-group col-12">
+										  <select class="custom-select" id="inputGroupSelect02">
+										    <option selected>플레이리스트</option>
+										    <option value="1">플레이리스트1</option>
+										    <option value="2">플레이리스트2</option>
+										    <option value="3">플레이리스트3</option>
+										  </select>
+										  <div class="input-group-append">
+										    <button class="input-group-text musicEditBtn" type="button" id="button-addon2">
+													<span>담기</span>
+												</button>
+										  </div>
 										</div>
-										<div class="modal-menu col-12">
-											<div>다운로드</div>
-										</div>
-										<div class="modal-menu col-12">
-											<div>삭제</div>
-										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" name="button" class="musicDownloadBtn">다운로드</button>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+				</section>
 
-						<!-- <i class="fa fa-search"></i> -->
-						<div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="shareTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-body">
-										<div class="subModal-title col-12">
-											<div>공유</div>
-											<div class="">
-												<input type="text" name="" value="link" class="modal_inp" id="musicURL">
-											</div>
-										</div>
-										<div class="modal-footer-left" data-dismiss="modal">
-											취소
-										</div>
-										<div class="modal-footer-right" data-dismiss="modal" onclick="url_copy()">
-											링크 복사
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="modal fade" id="addList" tabindex="-1" role="dialog" aria-labelledby="addListTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-body">
-										<div class="subModal-title col-12">
-											<div>내 리스트에 담기</div>
-											<div class="">
-												<select class="modal_select" name="">
-													<option value="">플레이리스트 1</option>
-													<option value="">플레이리스트 2</option>
-													<option value="">플레이리스트 3</option>
-												</select>
-											</div>
-										</div>
-										<div class="modal-footer-left" data-dismiss="modal">
-											취소
-										</div>
-										<div class="modal-footer-right" data-dismiss="modal">
-											확인
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-        </section>
-
-      </div>
-    </div>
+			</div>
+		</div>
 
 		<!-- Sidebar -->
 		<div id="sidebar">
@@ -146,26 +130,23 @@
 				</nav>
 			</div>
 		</div>
-  </div>
 
-  <!-- Scripts -->
-  <script src="static/js/jquery.min.js"></script>
-  <script src="static/js/browser.min.js"></script>
-  <script src="static/js/breakpoints.min.js"></script>
-  <script src="static/js/util.js"></script>
-  <script src="static/js/main.js"></script>
-  <script src="static/js/musicList.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.min.js" charset="utf-8"></script>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/musicList.js') }}"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
 

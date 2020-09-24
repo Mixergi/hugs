@@ -282,6 +282,10 @@ def logout():
     session.pop("USERNAME", None)
     return redirect(url_for("index"))
 
+@app.route("/terms")
+def terms():
+    return render_template('public/Hugs.html')
+
 @app.route("/profile")
 def profile():
     if not session.get("USERNAME") is None:
