@@ -31,28 +31,31 @@
 							<div class="appTitle">회원가입</div>
 						</header>
 						<div class="signupFormDiv">
-							<form action="/sign-up" method="POST">
+							<form action="/signup" method="POST">
 								<label class="inp">
-									<input type="text" id="inp" placeholder="&nbsp;" name="username" required autofocus>
+									<input type="text" id="inp" placeholder="&nbsp;" name="sname" required autofocus>
 									<span class="label">이름</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="text" id="inp" placeholder="&nbsp;" name="email">
+									<input type="text" id="inp" placeholder="&nbsp;" name="semail">
 									<span class="label">이메일</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="password" id="inp" placeholder="&nbsp;" name="password">
+									<input type="password" id="inp" placeholder="&nbsp;" name="spw">
 									<span class="label">비밀번호</span>
 									<span class="border"></span>
 								</label>
 								<label class="inp">
-									<input type="password" id="inp" placeholder="&nbsp;" name="conf_password">
+									<input type="password" id="inp" placeholder="&nbsp;" name="scpw">
 									<span class="label">비밀번호 확인</span>
 									<span class="border"></span>
 								</label>
-								<input type="submit" name="" value="회원가입" class="hugsBtn fit signupBtn">
+								<input type="checkbox" id="demo-copy" name="demo-copy">
+								<label for="demo-copy">개인정보처리방침 동의</label>
+								<a href="Hugs.html" style="color: black; float: right; text-decoration: underline;">보기</a>
+								<input type="button" name="" value="회원가입" class="hugsBtn fit signupBtn" onclick="location.href='index.html'" style="margin-top: 0.5em;">
 							</form>
 						</div>
 					</div>

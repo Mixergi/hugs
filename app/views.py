@@ -32,7 +32,7 @@ class Database:
         return db, cursor
 
     def get_db(self):
-        db = pymysql.connect(host='34.64.113.4',
+        db = pymysql.connect(host='34.64.149.185',
                         port=self._port,
                         user=self._user,
                         passwd='',
@@ -127,7 +127,7 @@ def playList_detail(list_name):
         return redirect(request.url.replace('playList','login'))
 
 def sql_runner(sql):
-    db, cursor = user_database.get_local_db()
+    db, cursor = user_database.get_db()
     cursor.execute(sql)
     result = cursor.fetchall()
     return result
@@ -204,7 +204,7 @@ def all():
     
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    db, cursor = user_database.get_local_db()
+    db, cursor = user_database.get_db()
 
     if request.method == "POST":
         req = request.form
@@ -247,7 +247,7 @@ def sign_up():
 
 @app.route("/login", methods=["GET","POST"])
 def login():
-    db, cursor = user_database.get_local_db()
+    db, cursor = user_database.get_db()
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','profile'))
     else:
