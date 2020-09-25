@@ -261,13 +261,14 @@ def login():
             """ % (email) 
             cursor.execute(sql)
             result = cursor.fetchall()
-            print(result)
+            print(result[0])
 
             if result:
                 if str(result[0][2]) == str(password):
                     container(result[0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
+                    print("container: "+user_session_container[session["USERNAME"]])
                     return render_template("public/index.html", user=user_session_container[session["USERNAME"]], status='Logout')
                 else:
                     flash("잘못된 비밀번호입니다.")
