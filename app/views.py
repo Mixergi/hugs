@@ -248,7 +248,7 @@ def sign_up():
 @app.route("/login", methods=["GET","POST"])
 def login():
     db, cursor = user_database.get_db()
-    print(session.get("USERNAME"))
+    print("session: " + str(session.get("USERNAME")))
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','index'))
     else:
@@ -268,7 +268,7 @@ def login():
                     container(result[0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
-                    return render_template("public/index.html", user=user_session_container[session["USERNAME"]][0], status='Logout')
+                    return render_template("public/index.html", user=user_session_container[session["USERNAME"]], status='Logout')
                 else:
                     flash("잘못된 비밀번호입니다.")
                     return redirect(request.url)
