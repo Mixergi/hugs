@@ -250,7 +250,7 @@ def login():
     db, cursor = user_database.get_db()
     print(session.get("USERNAME"))
     if not session.get("USERNAME") is None:
-        return redirect(request.url.replace('login','profile'))
+        return redirect(request.url.replace('login','index'))
     else:
         if request.method == "POST":
             req = request.form
@@ -276,7 +276,7 @@ def login():
                 flash("존재하지 않는 사용자입니다.")
                 return redirect(request.url)
 
-    return render_template("public/login.html", session=session.get("USERNAME"))
+    return render_template("public/index.html", session=session.get("USERNAME"))
 
 @app.route("/logout")
 def logout():
