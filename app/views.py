@@ -276,7 +276,7 @@ def login():
                 flash("존재하지 않는 사용자입니다.")
                 return redirect(request.url)
 
-    return render_template("public/index.html", session=session.get("USERNAME"))
+    return render_template("public/login.html", session=session.get("USERNAME"))
 
 @app.route("/logout")
 def logout():
