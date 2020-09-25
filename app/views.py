@@ -265,6 +265,7 @@ def login():
 
             if result:
                 if str(result[0][2]) == str(password):
+                    print('로그인 성공')
                     container(result[0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
