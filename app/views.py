@@ -250,7 +250,7 @@ def login():
     db, cursor = user_database.get_db()
     print("session: " + str(session.get("USERNAME")))
     if not session.get("USERNAME") is None:
-        return redirect(request.url.replace('login','index'))
+        return redirect(request.url.replace('login','profile'))
     else:
         if request.method == "POST":
             req = request.form
@@ -261,7 +261,7 @@ def login():
             """ % (email) 
             cursor.execute(sql)
             result = cursor.fetchall()
-            print(result[0])
+            print("username: " + str(result[0][0]))
 
             if result:
                 if str(result[0][2]) == str(password):
