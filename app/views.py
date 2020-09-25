@@ -248,6 +248,7 @@ def sign_up():
 @app.route("/login", methods=["GET","POST"])
 def login():
     db, cursor = user_database.get_db()
+    print(session.get("USERNAME"))
     if not session.get("USERNAME") is None:
         return redirect(request.url.replace('login','profile'))
     else:
