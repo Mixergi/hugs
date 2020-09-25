@@ -268,8 +268,8 @@ def login():
                     container(result[0])
                     session["USERNAME"] = str(result[0][0])
                     db.close()
-                    print("container: "+user_session_container[session["USERNAME"]])
-                    return render_template("public/index.html", user=user_session_container[session["USERNAME"]], status='Logout')
+                    print("container: "+str(user_session_container[session["USERNAME"]]))
+                    return render_template("public/index.html", user=str(user_session_container[session["USERNAME"]]), status='Logout')
                 else:
                     flash("잘못된 비밀번호입니다.")
                     return redirect(request.url)
